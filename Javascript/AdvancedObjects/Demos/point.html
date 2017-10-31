@@ -12,7 +12,7 @@
 			toString() {
 				return '(' + this.x + ',' + this.y + ')';
 			}
-			static distance(p1, p2) {
+			static distance(p1, p2) {						// Static methods are used to share data among objects 													  of the same class.
 				var xDif = p1.x - p2.x;
 				var yDif = p1.y - p2.y;
 				return Math.sqrt(xDif*xDif + yDif*yDif);
@@ -26,6 +26,7 @@
 		var point1 = new Point(3, 4);
 		var point2 = new Point(-1, 6);
 		document.write('Distance between ' + point1 + ' and ' + point2 + ' is ' + Point.distance(point1, point2));
+		document.write('<hr>Distance between X and Y is  ' + Point.distance(new Point(4,9), new Point(0,5)));
 	</script>
 </body>
 </html>

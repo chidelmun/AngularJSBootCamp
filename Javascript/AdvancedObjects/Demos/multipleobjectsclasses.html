@@ -46,6 +46,7 @@
 	<script>
 		var jdoe = new Person('Jane', 'Doe', 32);
 		var afung = new Person('Adam', 'Fung', 11);
+		var me = new Person('Dario', 'Chick', 26);
 		
 		var tigers = new Team('The Tigers', 'soccer');
 		if (!tigers.addPlayer(jdoe)) {
@@ -53,6 +54,10 @@
 		}
 		if (!tigers.addPlayer(afung)) {
 			alert('player ' + afung + ' not added - too young');
+		}
+
+		if (!tigers.addPlayer(me)) {
+			alert('player ' + me + ' not added - too young');
 		}
 
 		document.write('Here is my team:<br><br>');

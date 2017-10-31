@@ -22,6 +22,16 @@
 			and toString method
 		*/
 
+		var Vehicle = function(type, year,vin){
+			this.vehicleType = type;
+			this.yearPurchased = year;
+			this.VIN = vin;
+			this.toString = function(){
+				return "Vehicle Type :" + this.vehicleType + " Year Purchased :" + this.yearPurchased +" VIN :" + this.VIN ;
+			}
+
+		}
+
 		/*
 			create Fleet prototype, with members
 				companyName
@@ -32,6 +42,38 @@
 				averageAgeOfVehicles (finds average year of purchase,
 					then subtracts from current year to find average age)
 		*/
+
+		var Fleet = function(name){
+			this.companyName = name;
+			this.vehicles = [];
+			this.addVehicle = function(vehicle){
+				this.vehicles.push(vehicle);
+			}
+			this.toString = function(){
+				var str = "<strong> Company name :" + this.companyName  + " </strong> Vehicles : ";
+				str += "<ul>";
+				for(var i in this.vehicles){
+					if(this.vehicles.hasOwnProperty(i)){
+						let vehicle = this.vehicles[i];
+						str += "<li>" + vehicle.vehicleType + " " + vehicle.yearPurchased + " " + vehicle.VIN + "<li>";
+						
+					}
+				}
+				str += "</ul>";
+				return str;
+
+			}
+
+			this.averageAgeOfVehicles = function(){
+				var sum = 0;
+				for(let i = 0; i < this.vehicles.length ; i++){
+					var car = this.vehicles[i];
+					//sum += parseInt(this.vehicle[i].yearPurchased);
+					sum += parseInt(car.yearPurchased);
+				}
+				 return Math.round((new Date()).getFullYear() - (sum / this.vehicles.length));	
+			}
+		}
 			
 		function clearFields() {
 			document.getElementById('vehicleType').value = '';
@@ -51,7 +93,10 @@
 					var yearPurchased = document.getElementById('yearPurchased').value;
 					var VIN = document.getElementById('VIN').value;
 					/* add a vehicle */
+					var vehicle = new Vehicle(vehicleType, yearPurchased,VIN);
+					companyFleet.addVehicle(vehicle);
 					/* set the innerHTML of #currentFleetInfo to display the current fleet */
+					document.getElementById('currentFleetInfo').innerHTML = companyFleet.toString();
 					clearFields();
 				},
 				false);
@@ -59,6 +104,7 @@
 			getAverageAgeButton.addEventListener('click',
 				function() {
 					/* generate alert popup to display average age of vehicles in fleet */
+					alert(companyFleet.averageAgeOfVehicles());
 				},
 				false);
 		}

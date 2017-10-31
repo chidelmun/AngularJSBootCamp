@@ -26,9 +26,23 @@
 		    		purchasePrice
 		    */
 
+		    constructor(type, year,vin,price){
+		    	this.vehicleType = type;
+		    	this.yearPurchased = year;
+		    	this.VIN = vin;
+		    	this.purchasePrice = price;
+		    }
+
 		    /*
 		    	write toString method
 		    */
+
+		    toString(){
+		    	return   "Type : " + this.vehicleType + '<br>' +
+		    			" Year Purchased :" + this.yearPurchased + '<br>' +
+		    			"VIN :" + this.VIN + '<br>' +
+		    			"Purchase Price :" + this.purchasePrice + '<br>';
+		    }
 
 		    /*
 		    	write static method Compare which:
@@ -42,6 +56,20 @@
 		    			then less-old is better;
 		    			else, vehicles are "same"
 		    */
+			static Compare(v1, v2){
+				var ret;
+				if(v1.purchasePrice == v2.purchasePrice){
+					ret = 0;
+				}else{
+					if(v1.purchasePrice < v2.purchasePrice){
+						ret = -1;
+					}else{
+						ret = 1;
+					}
+				}
+				return ret;
+			}
+
 		}
 
 		class Fleet {
@@ -50,14 +78,36 @@
 					companyName
 					vehicles (an array)
 			*/
+			constructor(name){
+				this.companyName = name;
+				this.vehicles = [];
+
+			}
 
 			/*
 				write method addVehicle, which adds a vehicle
 			*/
 
+			addVehicle(vehicle){
+				this.vehicles.push(vehicle);
+			}
+
 			/*
 				write method toString
 			*/
+
+			toString(){
+				var str = "<ul>";;
+				for(let p in this.vehicles){
+					if(this.vehicles.hasOwnProperty(p)){
+						let car = this.vehicles[p];
+						str += "Type :" + car.vehicleType + "<br> Year Purchased : " + car.yearPurchased + "<br>" + " ID Number :" + car.VIN + " <br> Year Made :" +  car.yearPurchased + "<br> </li>";
+					}
+				}
+				str += "</ul>";
+				return str;
+			}
+
 
 			averageAgeOfVehicles() {
 				if (this.vehicles.length === 0) {
@@ -149,6 +199,8 @@
 						write code to compare the user-selected vehicles
 						and show results via alert popup
 					*/
+					alert(Vehicle.Compare(selectedVehicle1,selectedVehicle2));
+
 				},
 				false);
 		}

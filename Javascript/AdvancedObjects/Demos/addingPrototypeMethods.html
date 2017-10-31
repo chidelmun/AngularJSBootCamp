@@ -35,6 +35,10 @@
 			this.age = age;
 		}
 
+		Person.prototype.toStringVal = function(){
+			return "<hr>" + "Person Info:" + "FirstName :" +  this.fname + " Last Name :" + this.lname + " <hr>";
+		}
+
 		document.write('First name: ');
 		document.write(jdoe.fname);
 		document.write('<hr>');
@@ -61,6 +65,12 @@
 		document.write('<hr>');
 		document.write('Old enough to vote? ');
 		document.write(jdoe.isOldEnoughToVote() ? 'yes' : 'no');
+
+		document.write(jdoe.toStringVal());
+
+		document.write('<hr>');
+		document.write('<hr>');
+		document.write(jdoe);
 	</script>
 </body>
 </html>
