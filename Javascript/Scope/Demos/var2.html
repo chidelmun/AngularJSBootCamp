@@ -7,9 +7,16 @@
 		var var1 = 18;
 		var var2 = -18;
 		function SetVar() {
-			var var1 = 74;
+			this.var1 = 74;
 			var2 = -74;
+			this.foo = 45;					// this will be a global variable
+			var bar = 100;
 			document.write('Function SetVar called');
+			document.write('This keyword in function ' + this.var2) ;
+			this.fun = function(){
+				document.write("Function member");
+			}
+			
 		}
 	</script>
 </head>
@@ -26,6 +33,12 @@
 		document.write("<hr>");
 		document.write("var2 has value: " + var2);
 		document.write("<hr>");
+
+		var app = new SetVar();
+		app.fun();
+		document.write(app.foo);
+		document.write(app.bar);
+		
 	</script>
 </body>
 </html>

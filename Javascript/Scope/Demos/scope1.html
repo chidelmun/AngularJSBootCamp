@@ -4,20 +4,27 @@
 	<meta charset="utf-8">
 	<title>JavaScript Scope - Example 1</title>
 	<script>
-		var v1 = 13;
+		// Global variable declaration
+		var v1 = 40 ;
+		var v2 = -33;
 
 		function fun1() {
-			document.write("inside function fun1, v1 has value: " + v1);
+			document.write("\ninside function fun1, v1 has value: " + v1); // Accessed inside a function
+			document.write("\ninside function fun1, v1 has value: " + v2);
 		}
+		
 	</script>
 </head>
 <body>
 	<h1>Scope Example 1</h1>
 	<p><em>This page has no errors</em></p>
 	<script>
-		document.write("outside of functions, v1 has value: " + v1);
+		var foo = 22;
+		document.write("\noutside of functions, v1 has value: " + v1); // Accessed outside a function
+		document.write("\ninside function fun1, v1 has value: " + v2);
 		document.write("<hr>");
 		fun1();
+		document.write( " Sum of v1 and v2 is :" + (v1 + v2));
 	</script>
 </body>
 </html>

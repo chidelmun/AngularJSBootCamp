@@ -4,10 +4,19 @@
 	<meta charset="utf-8">
 	<title>Nested Anonymous Function Example</title>
 	<script>
+		function annonym(){
+			var lst = [];
+			for(var i = 0; i<20; i ++){
+				lst[i] = i*13;
+			}
+
+			return lst;
+		}
+
 		function createIDs(arr) {
 		    var startingVal = 10;
 		    for (var p=0; p<arr.length; p++) {
-		      	arr[p]["UID"] = function() {
+		      	arr[p]["UID"] = function() {  // arr[p].UID will also work
 		      		return startingVal + p;
 		      	}
 		    }
@@ -27,6 +36,11 @@
 		for (var i=0; i<peopleWithUniqueIDs.length; i++) {
 			document.write(peopleWithUniqueIDs[i]["fname"] + ' ' + peopleWithUniqueIDs[i]["fname"] + ", ID: " + peopleWithUniqueIDs[i].UID());
 			document.write('<hr>');
+		}
+
+		var func = annonym();
+		for(var n = 0; num<func.length ; n++){
+				document.write(func.fun());
 		}
 	</script>
 </body>
