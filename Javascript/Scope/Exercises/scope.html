@@ -5,8 +5,9 @@
 	<title>Scope: Functions inside Functions</title>
 	<script>
 		function writeIt(numTimes, multiple) {
+
 		    function doMultiplication(val, multiple) {
-		        i = val * multiple;
+		        var i = val * multiple;    // Make i local not global
 		        return i;
 		    }
 
