@@ -1,0 +1,16 @@
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+ }
+ td{
+     text-align: left;
+ }
+ td.right{
+    text-align: right;
+}
+ table{
+     margin: 5px;
+ }
+ button{
+     margin: 5px;
+ }

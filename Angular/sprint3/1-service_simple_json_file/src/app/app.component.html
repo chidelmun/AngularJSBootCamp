@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <app-header title="Header" [path]='display' (selected)='selectView($event)' ></app-header>
+  <div ngSwitch='{{display}}' >
+    <app-todolist 
+      (selected)='displaySelectedItem($event)' 
+      *ngSwitchCase = "'list'" 
+      title="ToDos" ></app-todolist>
+    <app-todoitem 
+      selectedItem = '{{selectedItem}}'
+      *ngSwitchCase = "'item'" 
+      title="Details" ></app-todoitem>  
+  </div>
+  <app-footer title="Footer"></app-footer>
+</div>
+<span>app.component</span>
+

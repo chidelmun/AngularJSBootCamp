@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="json.js"></script>
+<script type="text/javascript">
+	function sendRequest(msg) {
+		document.getElementById("ResponseDiv").innerHTML = "";
+		var objJSON = {
+			"msg": msg
+		};
+		var strJSON = encodeURIComponent(JSON.stringify(objJSON));
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("post", "ReceiveJSON", true);
+
+		xmlhttp.onreadystatechange = function() {
+			respond(xmlhttp);
+		}
+
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+		xmlhttp.send("strJSON=" + strJSON);
+	}
+
+	function respond(xmlhttp) {
+		document.getElementById("ResponseDiv").innerHTML = xmlhttp.responseText;
+	}
+
+	window.onload = function() {
+		var btnHi = document.getElementById("hi");
+		var btnBye = document.getElementById("bye");
+		btnHi.addEventListener('click', function() {
+			sendRequest(btnHi.innerHTML);
+		}, false);
+		btnBye.addEventListener('click', function() {
+			sendRequest(btnBye.innerHTML);
+		}, false);
+	};
+</script>
+<title>Using JSON</title>
+</head>
+
+<body>
+<h1>Request</h1>
+<button id="hi">Hi There!</button>
+<button id="bye">Good bye!</button>
+<h1>Response</h1>
+<div id="ResponseDiv">Waiting...</div>
+</body>
+</html>

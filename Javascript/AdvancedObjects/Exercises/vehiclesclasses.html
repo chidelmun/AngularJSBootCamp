@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Company Fleet</title>
+	<style>
+		form#addVehicle {
+			float:left;
+			width:48%;
+		}
+		div#info {
+			float:right;
+			width:48%;
+		}
+		form#compare {
+			margin-top:15px;
+		}
+	</style>
+	<script>
+		class Vehicle {
+			/*
+				write constructor method for Vehicle class, with arguments for the following, and then set the initial value of the properties in the class to the values provided:
+		    		vehicleType
+		    		yearPurchased
+		    		VIN
+		    		purchasePrice
+		    */
+
+		    /*
+		    	write toString method
+		    */
+
+		    /*
+		    	write static method Compare which:
+		    		accepts 2 Vehicles as arguments
+		    		returns 1 if v1 is "better"
+		    		returns -1 if v2 is "better"
+		    		returns 0 if v1 and v2 are the same
+		    		and where "better" is defined as
+		    			purchase price is higher;
+		    			if same purchase price is same,
+		    			then less-old is better;
+		    			else, vehicles are "same"
+		    */
+		}
+
+		class Fleet {
+			/*
+				write contstuctor for Fleet class, with fields for
+					companyName
+					vehicles (an array)
+			*/
+
+			/*
+				write method addVehicle, which adds a vehicle
+			*/
+
+			/*
+				write method toString
+			*/
+
+			averageAgeOfVehicles() {
+				if (this.vehicles.length === 0) {
+					return 0;
+				}
+				var yearSum = 0;
+				for (let v in this.vehicles) {
+					let vehicle = this.vehicles[v];
+					yearSum += parseInt(vehicle.yearPurchased);
+				}
+				var averageYear = parseInt(yearSum / this.vehicles.length);
+				var curYear = new Date().getFullYear();
+				return curYear - averageYear;
+			}
+		}
+
+		//this function can be used to format numbers
+		Number.prototype.formatMoney = function(c, d, t) {
+			var n = this,
+		    	c = isNaN(c = Math.abs(c)) ? 2 : c,
+		    	d = d == undefined ? "." : d,
+		    	t = t == undefined ? "," : t,
+		    	s = n < 0 ? "-" : "",
+		    	i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+		    	j = (j = i.length) > 3 ? j % 3 : 0;
+		   		return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+		 };
+
+		function clearFields() {
+			document.getElementById('vehicleType').value = '';
+			document.getElementById('yearPurchased').value = '';
+			document.getElementById('VIN').value = '';
+			document.getElementById('purchasePrice').value = '';
+		}
+
+		window.onload = function() {
+			var CompanyFleet = new Fleet('ABC, Inc.');
+			document.getElementById('currentFleetInfo').innerHTML = CompanyFleet;
+
+			var addVehicleForm = document.getElementById('addVehicle');
+			addVehicleForm.addEventListener('submit',
+				function(event) {
+					event.preventDefault();
+					var vehicleType = document.getElementById('vehicleType').value;
+					var yearPurchased = document.getElementById('yearPurchased').value;
+					var VIN = document.getElementById('VIN').value;
+					var purchasePrice = document.getElementById('purchasePrice').value;
+					CompanyFleet.addVehicle(new Vehicle(vehicleType, yearPurchased, VIN, purchasePrice));
+					document.getElementById('currentFleetInfo').innerHTML = CompanyFleet;
+					clearFields();
+					if (CompanyFleet.vehicles.length >= 2) {
+						var select1 = '';
+					    select1 += '<select id="v1">';
+					    for (var v=0; v<CompanyFleet.vehicles.length; v++) {
+							select1 += '<option value="'+v+'">Vehicle '+v+'</option>';
+						}
+					    select1 += '</select>';
+
+						var select2 = '';
+					    select2 += '<select id="v2">';
+					    for (var v=0; v<CompanyFleet.vehicles.length; v++) {
+							select2 += '<option value="'+v+'">Vehicle '+v+'</option>';
+						}
+					    select2 += '</select>';
+
+					    var submitButton = '<input type="submit" value="Compare">';
+
+					    var compareForm = document.getElementById('compare');
+					    compareForm.innerHTML = select1 + ' ' + select2 + ' ' + submitButton;
+					}
+				},
+				false);
+			var getAverageAgeButton = document.getElementById('getAverageAge');
+
+			getAverageAgeButton.addEventListener('click',
+				function() {
+					var averageAge = CompanyFleet.averageAgeOfVehicles();
+					alert('The average age of all vehicles is ' + averageAge + ' years');
+				},
+				false);
+
+			var compareForm = document.getElementById('compare');
+			compareForm.addEventListener('submit',
+				function(event) {
+					event.preventDefault();
+					var selectedVehicle1 = document.getElementById('v1').value;
+					var selectedVehicle2 = document.getElementById('v2').value;
+					/*
+						write code to compare the user-selected vehicles
+						and show results via alert popup
+					*/
+				},
+				false);
+		}
+	</script>
+</head>
+<body>
+	<h1>Company Fleet</h1>
+	<form id="addVehicle">
+		<select id="vehicleType">
+			<option value="">-vehicle type-</option>
+			<option value="car">car</option>
+			<option value="van">van</option>
+			<option value="truck">truck</option>
+			<option value="bus">bus</option>
+		</select>
+		<input type="text" id="yearPurchased" placeholder="year purchased">
+		<br>
+		<input type="text" id="VIN" placeholder="VIN">
+		<input type="text" id="purchasePrice" placeholder="purchase price">
+		<br>
+		<input type="submit" value="Add Vehicle">
+	</form>
+	<div id="info">
+		<div id="currentFleetInfo"></div>
+		<button id="getAverageAge">Average Age of Vehicles</button>
+		<form id="compare"></form>
+	</div>
+</body>
+</html>

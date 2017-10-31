@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Scope: Functions inside Functions</title>
+	<script>
+		var v0 = 0;
+		//accessible here: v0
+		function fun1() {
+			var v1 = 7;
+			//accessible here: v0, v1
+			function fun2() {
+				var v2 = 26;
+				//accessible here: v0, v1, v2
+				function fun3() {
+					var v3 = 234;
+					//accessible here: v0, v1, v2, v3
+				}
+				fun3();
+				//accessible here: v0, v1, v2
+			}
+			fun2();
+			//accessible here: v0, v1
+		}
+	</script>
+</head>
+<body>
+	<h1>Scope: Functions inside Functions</h1>
+	<script>
+		fun1();
+		//accessible here: v0
+	</script>
+</body>
+</html>

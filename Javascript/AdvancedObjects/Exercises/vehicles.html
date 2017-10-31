@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Company Fleet</title>
+	<style>
+		form#addVehicle {
+			float:left;
+			width:48%;
+		}
+		div#info {
+			float:right;
+			width:48%;
+		}
+	</style>
+	<script>
+		/*
+			create Vehicle prototype, with members
+				vehicleType
+				yearPurchased
+				VIN (Vehicle Identification Number)
+			and toString method
+		*/
+
+		/*
+			create Fleet prototype, with members
+				companyName
+				vehicles (an array of Vehicles)
+			and methods
+				addVehicle (adds a Vehicle to the array)
+				toString
+				averageAgeOfVehicles (finds average year of purchase,
+					then subtracts from current year to find average age)
+		*/
+			
+		function clearFields() {
+			document.getElementById('vehicleType').value = '';
+			document.getElementById('yearPurchased').value = '';
+			document.getElementById('VIN').value = '';
+		}
+
+		window.onload = function() {
+			var companyFleet = new Fleet('ABC, Inc.');
+			/* set the innerHTML of #currentFleetInfo to display the current fleet */
+
+			var addVehicleForm = document.getElementById('addVehicle');
+			addVehicleForm.addEventListener('submit',
+				function(event) {
+					event.preventDefault();
+					var vehicleType = document.getElementById('vehicleType').value;
+					var yearPurchased = document.getElementById('yearPurchased').value;
+					var VIN = document.getElementById('VIN').value;
+					/* add a vehicle */
+					/* set the innerHTML of #currentFleetInfo to display the current fleet */
+					clearFields();
+				},
+				false);
+			var getAverageAgeButton = document.getElementById('getAverageAge');
+			getAverageAgeButton.addEventListener('click',
+				function() {
+					/* generate alert popup to display average age of vehicles in fleet */
+				},
+				false);
+		}
+	</script>
+</head>
+<body>
+	<h1>Company Fleet</h1>
+	<form id="addVehicle">
+		<select id="vehicleType">
+			<option value="">-vehicle type-</option>
+			<option value="car">car</option>
+			<option value="van">van</option>
+			<option value="truck">truck</option>
+			<option value="bus">bus</option>
+		</select>
+		<input type="text" id="yearPurchased" placeholder="year purchased">
+		<input type="text" id="VIN" placeholder="VIN">
+		<input type="submit" value="Add Vehicle">
+	</form>
+	<div id="info">
+		<div id="currentFleetInfo"></div>
+		<button id="getAverageAge">Average Age of Vehicles</button>
+	</div>
+</body>
+</html>

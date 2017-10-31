@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array.prototype.map</title>
+</head>
+<body>
+	<h1>Array.prototype.map</h1>
+	<script>
+		var nums = [1.21, 2.6, 3.3, 4.76];
+		var roundedNums = nums.map(Math.round);
+		document.write(roundedNums);
+
+		document.write('<hr>');
+
+		var people = [
+			{fname:'Marla', lname:'Jayson'},
+			{fname:'Jack', lname:'Patel'},
+			{fname:'Eric', lname:'Song'},
+			{fname:'James', lname:'Doe'}
+		];
+		function getFullName(person) {
+			return person.fname + ' ' + person.lname;
+		}
+		var peopleFullNames = people.map(getFullName);
+		document.write(peopleFullNames);
+	</script>
+</body>
+</html>

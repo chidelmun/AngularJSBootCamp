@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The arguments Object</title>
+</head>
+<body>
+	<h1>The arguments Object</h1>
+	<script>
+		function formatAsList(listType) {
+			var myargs = Array.from(arguments).slice(1);
+			if (myargs.length == 0) {
+				return '';
+			}
+			$html_str = '<' + listType + '>';
+			for (var i in myargs) {
+				$html_str += '<li>' + myargs[i] + '</li>';
+			}
+			$html_str += '</' + listType + '>';
+			return $html_str;
+		}
+
+		document.write(formatAsList('ul','item 1','item 2','item 3'));
+		document.write('<hr>');
+		document.write(formatAsList('ul'));
+		document.write('<hr>');
+		document.write(formatAsList('ol','red','green','blue','orange'));
+	</script>
+</body>
+</html>

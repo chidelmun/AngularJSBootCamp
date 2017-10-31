@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Prototyping</title>
+	<script>
+		var Person = function(fname, lname, age) {
+			this.fname = fname;
+			this.lname = lname;
+			this.age = age;
+			this.fullName = function() {
+				return this.fname + ' ' + this.lname;
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Prototyping</h1>
+	<script>
+		var jdoe = new Person('Jane', 'Doe', 32);
+		document.write('First name: ');
+		document.write(jdoe.fname);
+		document.write('<hr>');
+		document.write('Full name: ');
+		document.write(jdoe.fullName());
+
+		document.write('<hr>');
+		document.write('<hr>');
+
+		var afung = new Person('Adam', 'Fung', 11);
+		document.write('First name: ');
+		document.write(afung.fname);
+		document.write('<hr>');
+		document.write('Full name: ');
+		document.write(afung.fullName());
+	</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="AjaxQuiz.css" type="text/css" rel="stylesheet">
+<script src="json.js" type="text/javascript"></script>
+<script type="text/javascript">
+	function init() {
+		var quiz = document.getElementById("quizForm");
+		quiz.addEventListener('click', checkAnswer, false);
+	}
+	
+	function respond(xmlhttp, resultDiv) {
+		resultDiv.innerHTML = xmlhttp.responseText;
+	}
+
+	function checkAnswer(e) {
+		var target = e.target;
+		var q = target.name;
+		var a = target.value;
+		var objQuestion = {
+			question: q,
+			answer: a
+		};
+		var resultDiv = document.getElementById(q + "Result");
+		var strJSON = encodeURIComponent(JSON.stringify(objQuestion));
+		resultDiv.innerHTML = "checking...";
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open("post", "AjaxQuiz", true);
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				respond(xmlhttp, resultDiv);
+			}
+		}
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+		xmlhttp.send("strJSON=" + strJSON);
+	}
+
+	window.onload = function() {
+		init();
+	}
+</script>
+<title>Ajax Quiz</title>
+</head>
+
+<body>
+<h1>Ajax Quiz</h1>
+<form onsubmit="return false" id="quizForm">
+<div class="WholeQuestion">
+	<label class="Question" for="q1">What is 1 + 1?</label>
+	<div class="Answer">
+		<input type="radio" name="q1" value="1"> 1
+		<input type="radio" name="q1" value="2"> 2
+		<input type="radio" name="q1" value="3"> 3
+	</div>
+	<div class="Result" id="q1Result"></div>
+</div>
+<div class="WholeQuestion">
+	<label class="Question" for="q2">What is 1 + 2?</label>
+	<div class="Answer">
+		<input type="radio" name="q2" value="1"> 1
+		<input type="radio" name="q2" value="2"> 2
+		<input type="radio" name="q2" value="3"> 3
+	</div>
+	<div class="Result" id="q2Result"></div>
+</div>
+<div class="WholeQuestion">
+	<label class="Question" for="q3">What is 2 - 1?</label>
+	<div class="Answer">
+		<input type="radio" name="q3" value="1"> 1
+		<input type="radio" name="q3" value="2"> 2
+		<input type="radio" name="q3" value="3"> 3
+	</div>
+	<div class="Result" id="q3Result"></div>
+</div>
+</form>
+</body>
+</html>

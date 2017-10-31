@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array.prototype.find</title>
+</head>
+<body>
+	<h1>Array.prototype.find</h1>
+	<script>
+		var people = [
+			{
+				fname:'Maria',
+				lname:'Martinez',
+				id:14637,
+				hireDate:new Date(1999,2,4)
+			},
+			{
+				fname:'Jane',
+				lname:'Doe',
+				id:29384,
+				hireDate:new Date(2003,4,13)
+			},
+			{
+				fname:'John',
+				lname:'Doe',
+				id:39922,
+				hireDate:new Date(2004,11,20)
+			},
+			{
+				fname:'Mary',
+				lname:'Chan',
+				id:83736,
+				hireDate:new Date(2014,7,4)
+			}
+		];
+
+		function hiredAfter2000(person) {
+			var jan012000 = new Date(2000,1,1);
+			return person.hireDate >= jan012000;
+		}
+
+		var firstPersonHiredAfter2000 = people.find(hiredAfter2000);
+		document.write('The first person hired after 1/1/2000 is ' + firstPersonHiredAfter2000.fname + ' ' + firstPersonHiredAfter2000.lname);
+
+
+		document.write('<hr>');
+		
+
+		function hasId(person, id) {
+			return person.id === id;
+		}
+		var idToFind = 83736;
+		var person = people.find(function(p) {
+			return hasId(p, idToFind);
+		});
+		if (typeof person != 'undefined') {
+			document.write(person.fname + " " + person.lname + " has id " + idToFind);
+		} else {
+			document.write("person not found");
+		}
+
+		document.write('<hr>');
+
+		var idToFind2 = 11111;
+		var person2 = people.find(function(p) {
+			return hasId(p, idToFind2);
+		});
+		if (typeof person2 != 'undefined') {
+			document.write(person2.fname + " " + person2.lname + " has id " + idToFind2);
+		} else {
+			document.write("person not found");
+		}
+
+	</script>
+</body>
+</html>

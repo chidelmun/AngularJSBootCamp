@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Try/Catch</title>
+<style>
+    input.operator {
+        width:30px;
+    }
+    input#quotient {
+        width:100px;
+    }
+</style>
+<script type="text/javascript">
+    function DisplayAnswer() {
+        var dividendField = document.getElementById('dividend');
+        var divisorField = document.getElementById('divisor');
+        var msgField = document.getElementById('msg');
+
+        var dividend = dividendField.value;
+        var divisor = divisorField.value;
+        var quotient;
+
+        try {
+            if (isNaN(dividend) || isNaN(divisor) || dividend=='' || divisor=='') {
+                throw new Error("both operands must be a number");
+            } else if (+divisor == 0) {
+                throw new Error("cannot divide by zero");
+            } else {
+                quotient = dividend / divisor;
+                msg.innerHTML = dividend  + " / " + divisor + " = " + quotient;
+            }
+        }
+        catch (e) {
+            msg.innerHTML = 'There was a problem: ' + e.message;
+        }
+        finally {
+            dividendField.value = '';
+            divisorField.value = '';
+        }
+    }
+
+    window.onload = function() {
+        var equals = document.getElementById('equals');
+        equals.addEventListener('click', DisplayAnswer, false)
+    };
+
+</script>
+</head>
+<body>
+<input type="text" id="dividend" class="operator"> / <input type="text" id="divisor" class="operator"> <button id="equals">=</button>
+<div id="msg"></div>
+</body>
+</html>

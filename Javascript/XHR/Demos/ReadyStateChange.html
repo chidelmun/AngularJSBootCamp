@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ReadyStateChange</title>
+
+<script type="text/javascript">
+	function start() {
+		var xmlhttp = new XMLHttpRequest();
+		var contentDiv = document.getElementById("Content");
+
+		xmlhttp.open("HEAD", "Demo.xml", true);
+		xmlhttp.onreadystatechange = function() {
+			contentDiv.innerHTML +=
+				"Ready State: " + xmlhttp.readyState + "<br>";
+		}
+		xmlhttp.send(null);
+	}
+
+	window.onload = function() {
+		var btn = document.getElementById("btnStart");
+		btn.addEventListener('click', start);
+	};
+</script>
+</head>
+<body>
+	<button id="btnStart">Start</button>
+	<div id="Content"></div>
+</body>
+</html>

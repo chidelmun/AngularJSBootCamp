@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Simple Objects in JavaScript</title>
+</head>
+<body>
+	<h1>Simple Objects in JavaScript</h1>
+	<script>
+		var jdoe = {fname:'Jane', lname:'Doe', age:32, fullName:function() {return this.fname + ' ' + this.lname}}
+		document.write('First name: ');
+		document.write(jdoe.fname);
+		document.write('<hr>');
+		document.write('Full name: ');
+		document.write(jdoe.fullName());
+	</script>
+</body>
+</html>

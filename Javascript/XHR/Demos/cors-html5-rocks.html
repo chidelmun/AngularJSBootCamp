@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CORS - HTML5Rocks and NY Times</title>
+<style>
+	#responseContent {
+		width:66%;
+		padding:1% 2%;
+		background-color:#ccc;
+		margin-top:20px;
+	}
+	h2 {
+		margin:0;
+		padding:0;
+	}
+</style>
+<script>
+
+	window.onload = function() {
+		var btnhtml5rocks = document.getElementById('btnhtml5rocks');
+		var responseContent = document.getElementById('responseContent');
+		btnhtml5rocks.addEventListener('click', function(e) {
+			responseContent.innerHTML = '<h2>Response Content</h2>';
+			
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.open("GET", "https://www.html5rocks.com/en/tutorials/file/xhr2/", true);
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4) {
+					if (xmlhttp.status == 200) {
+						responseContent.innerHTML += xmlhttp.responseText;
+					} else {
+						alert("failed!");
+					}
+				}
+			}
+			xmlhttp.send(null);
+		});
+
+		btnnytimes.addEventListener('click', function(e) {
+			responseContent.innerHTML = '<h2>Response Content</h2>';;
+			
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.open("GET", "http://www.nytimes.com/", true);
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4) {
+					if (xmlhttp.status == 200) {
+						responseContent.innerHTML += xmlhttp.responseText;
+					} else {
+						alert("failed!");
+					}
+				}
+			}
+			xmlhttp.send(null);
+		});
+	};
+</script>
+</head>
+<body>
+	<button id="btnhtml5rocks">Fetch HTML5 Rocks</button>
+	<button id="btnnytimes">Fetch NY Times</button>
+	<br>
+	<div id="responseContent"></div>
+</body>
+</html>

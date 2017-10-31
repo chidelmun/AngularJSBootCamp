@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Arrow Functions</title>
+</head>
+<body>
+	<h1>Arrow Functions</h1>
+	<script>
+		// a function expression:
+		var foo = function(a, b) {
+			return 3*a + b;
+		}
+		document.write( foo(1,2) );
+
+		document.write( '<hr>' );
+
+		// written as an arrow function:
+		let bar = (a, b) => 3*a + b;
+		document.write( bar(1,2) );
+
+		document.write( '<hr>' );
+		document.write( '<hr>' );
+
+		// the real value of arrow functions comes when using callback functions:
+		var arr1 = [1, 2, 3, 4];
+		var arr1Squares = arr1.map(function(i) {
+			return i*i;
+		});
+		document.write( arr1Squares );
+
+		document.write( '<hr>' );
+
+		var arr2 = [1, 2, 3, 4];
+		// using arrow function:
+		var arr2Squares = arr2.map(i => i*i);
+		document.write( arr2Squares );
+
+	</script>
+</body>
+</html>

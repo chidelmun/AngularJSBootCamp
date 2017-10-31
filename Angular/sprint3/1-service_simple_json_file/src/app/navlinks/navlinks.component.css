@@ -1,0 +1,15 @@
+div{ display: inline-flex; }
+a {
+    font-family: sans-serif;
+    background-color: lightgray;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 0px 5px 0px 5px;
+} 
+a:hover {
+    background-color: darkgray;
+    color: white;
+}
+.active{
+    font-weight: bold;
+}

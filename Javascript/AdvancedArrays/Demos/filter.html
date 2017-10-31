@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array.prototype.filter</title>
+</head>
+<body>
+	<h1>Array.prototype.filter</h1>
+	<script>
+		var arrNums = [10, -3, 39, 25, 88];
+		function greaterThan17(val) {
+			return val > 17;
+		}
+		var arrBiggerThan = arrNums.filter(greaterThan17);
+		document.write(arrBiggerThan);
+
+
+		document.write('<hr>');
+
+
+		var arrDates = [];
+		arrDates.push(new Date(2016, 04, 01));
+		arrDates.push(new Date(2015, 01, 19));
+		arrDates.push(new Date(1977, 11, 13));
+		arrDates.push(new Date(1999, 01, 01));
+		function laterThan(d) {
+			var dateTest = new Date(1990, 01, 01);
+			return d > dateTest;
+		}
+		var arrDatesLaterThan = arrDates.filter(laterThan);
+		document.write(arrDatesLaterThan);
+
+
+		document.write('<hr>');
+
+
+		var arrPossibleSquares = [1, 2, 9, 16, 24, 36, 41];
+		function isPerfectSquare(n) {
+			return n > 0 && Math.sqrt(n) % 1 === 0;
+		}
+		var arrPerfectSquares = arrPossibleSquares.filter(isPerfectSquare);
+		document.write(arrPerfectSquares);
+
+
+		document.write('<hr>');
+
+
+		var arr = [10, 21, 4, 88, 4, 10, 10, 14, 37, 21];
+		function isUnique(val) {
+			var count = 0;
+			for (var i in arr) {
+				if (val == arr[i]) {
+					count++;
+					if (count > 1) {
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+		var uniqueElements = arr.filter(isUnique);
+		document.write(uniqueElements);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Nested Try/Catch</title>
+<script type="text/javascript">
+try {
+    document.write("Outer try...<br/>");
+
+    try {
+        document.write("Inner try...<br/>");
+        throw new Error("custom error");
+    }
+    catch (e) {
+        document.write ("Inner catch caught error: " + e.message + "<br/>");
+        throw e;
+    }
+    finally {
+        document.write ("Inner finally...<br/>");
+    }
+} catch (e) {
+    document.write ("Outer catch caught error: " + e.message + "<br/>");
+} finally {
+    document.write ("Outer finally...");
+}
+
+</script>
+</head>
+<body>
+<p>Nothing to show here.</p>	
+</body>
+</html>

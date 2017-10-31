@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flexible Arguments</title>
+</head>
+<body>
+	<h1>Flexible Arguments</h1>
+	<script>
+		function stats(maxOrMin) {
+			var myargs = Array.from(arguments).slice(1);
+			if (myargs.length == 0) {
+				return null;
+			}
+			if (maxOrMin == 'max') {
+				var max = myargs[0];
+			} else {
+				var min = myargs[0];
+			}
+			for (var i in myargs) {
+				if (maxOrMin == 'max') {
+					if (myargs[i] > max) {
+						max = myargs[i];
+					}
+				} else {
+					if (myargs[i] < min) {
+						min = myargs[i];
+					}
+				}
+			}
+			return maxOrMin == 'max' ? max : min;
+		}
+
+		document.write(stats('max', 3, 49, 20, -3, 17));
+		document.write('<hr>');
+		document.write(stats('min', 22, 11, 38, -3, 17));
+	</script>
+</body>
+</html>

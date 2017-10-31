@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSONP - Yahoo! Query Language</title>
+<script>
+	function displayInfo(data) {
+		var content = document.getElementById('content');
+		content.innerHTML = '';
+		var results = data.query.results.Result;
+		for(i=0; i<results.length;i++) {
+			result = results[i];
+			content.innerHTML += '<p><a href="' + result.MapUrl + '" target="_blank">' + result.Title + '</a></p>';
+		}
+	}
+
+	function requestJSONP(url) {
+		var script = document.createElement('script');
+		script.src = url;
+		script.onload = function () {
+			this.remove();
+		};
+		document.head.appendChild(script);
+	}
+
+	window.onload = function() {
+
+		var btn = document.getElementById('btn');
+
+		btn.addEventListener('click', function(e) {
+			var zip = document.getElementById('zip').value;
+			var query = document.getElementById('query').value;
+			var script = document.createElement('script');
+			var url = "http://query.yahooapis.com/v1/public/yql?format=json&q=select+*+from+local.search+where+zip='" + zip + "'+and+query='" + query + "'&callback=displayInfo"
+			requestJSONP(url);
+		});
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="zip" placeholder="zip"> <input type="text" id="query" placeholder="query (e.g. pizza)">
+	<button id="btn">Go</button>
+	<div id="content"></div>
+</body>
+</html>

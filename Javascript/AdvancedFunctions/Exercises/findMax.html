@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Find Max</title>
+	<style>
+		#arrayDisplay {
+			font-size:24px;
+			margin-bottom:5px;
+		}
+		button {
+			padding:2px 5px;
+			font-size:20px;
+		}
+	</style>
+	<script>
+		function findMax(arr) {
+			// write body of function here
+		}
+
+		window.onload = function() {
+			var a = [];
+			var arrayDisplay = document.getElementById('arrayDisplay');
+			arrayDisplay.innerHTML = '';
+			for(var i=0; i<10; i++) {
+				var randomNum = // generate a random number
+				// add randomNum to the array a
+				// display randomNum in the innerHTML of the #arrayDisplay div
+			}
+
+			var resultDisplay = document.getElementById('resultDisplay');
+			document.getElementById('doFindMax').addEventListener('click', function(e) {
+				resultDisplay.innerHTML = '';
+				resultDisplay.innerHTML = 'The max is: ' + findMax(a);
+			}, 'false');
+		}
+		
+	</script>
+</head>
+<body>
+	<h1>Find Max</h1>
+	<div id="arrayDisplay"></div>
+	<button id="doFindMax">Find Max</button>
+	<div id="resultDisplay"></div>
+</body>
+</html>
+

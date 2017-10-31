@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Simple Bug - onerror</title>
+<script type="text/javascript">
+window.addEventListener("error", function (e) {
+    alert('Error: ' + e.error.message);
+	return true;
+});
+
+function getInput() {
+	var name = prompt('Type your name', '');
+	alert('Your name has ' + name.length + ' letters.');
+}
+getInput();
+</script>
+</head>
+<body>
+<p>Nothing to show here.</p>	
+</body>
+</html>

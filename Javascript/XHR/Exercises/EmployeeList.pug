@@ -1,0 +1,9 @@
+doctype html
+html(lang="en")
+  head
+    title EmployeeList
+
+  body
+    ul
+      each emp in employees
+        li(id='emp' + emp.EmployeeID) #{emp.FirstName} #{emp.LastName}

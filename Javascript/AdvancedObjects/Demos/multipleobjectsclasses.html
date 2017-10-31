@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Multiple Classes</title>
+	<script>
+		class Person {
+			constructor(fname, lname, age) {
+				this.fname = fname;
+				this.lname = lname;
+				this.age = age;
+			}
+			toString() {
+				return this.fname + ' ' + this.lname;
+			}
+		}
+
+		class Team {
+			constructor(teamName, sport) {
+				this.teamName = teamName;
+				this.sport = sport;
+				this.players = [];
+			}
+			addPlayer(person) {
+				if (person.age >= 18) {
+					this.players.push(person);
+					return true;
+				}
+				return false;
+			}
+			toString() {
+				var str = '<strong>' + this.teamName + '</strong>';
+				str += '<ul>';
+				for (let p in this.players) {
+					let person = this.players[p];
+					str += '<li>' + person + '</li>';
+				}
+				str += '</ul>';
+				return str;
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Multiple Classes</h1>
+	<script>
+		var jdoe = new Person('Jane', 'Doe', 32);
+		var afung = new Person('Adam', 'Fung', 11);
+		
+		var tigers = new Team('The Tigers', 'soccer');
+		if (!tigers.addPlayer(jdoe)) {
+			alert('player not added - too young');
+		}
+		if (!tigers.addPlayer(afung)) {
+			alert('player ' + afung + ' not added - too young');
+		}
+
+		document.write('Here is my team:<br><br>');
+		document.write(tigers);
+	</script>
+</body>
+</html>

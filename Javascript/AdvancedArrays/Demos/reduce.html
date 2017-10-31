@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array.prototype.reduce</title>
+</head>
+<body>
+	<h1>Array.prototype.reduce</h1>
+	<script>
+		var nums = [6, 2, 4, 7, 9, 11];
+		var total = nums.reduce( (a, b) => a + b );
+		document.write(total);
+
+		document.write('<hr>');
+
+		function isPrime(num) {
+			if (num < 2) {
+				return false;
+			}
+			var sqroot = Math.sqrt(num);
+			for (var i=2; i<=sqroot; i++) {
+				if (num % i == 0) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+		function countPrimes(total, num) {
+			if (isPrime(num)) {
+				return total + 1;
+			}
+			return total;
+		}
+
+		var numPrimes = nums.reduce(countPrimes, 0);
+		document.write(numPrimes);
+
+		document.write('<hr>');
+
+		var average = nums.map( function(value, i, arr) {
+			return value / arr.length;
+		}).reduce( (a, b) => a + b );
+
+		document.write(average);
+	</script>
+</body>
+</html>

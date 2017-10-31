@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Set</title>
+</head>
+<body>
+	<h1>Set</h1>
+	<script>
+		var mySet = new Set();
+		mySet.add(1);
+		mySet.add("lemonade");
+		var arr = ['one', 'two', 'three'];
+		mySet.add(arr);
+		mySet.add(1); // won't be added, as 1 already exists as an element
+
+		document.write('<p>Size of set: ' + mySet.size + '</p>');
+		document.write('<p>Does mySet have element 1?: ' + mySet.has(1) + '</p>');
+		document.write('<p>Does mySet have element arr?: ' + mySet.has(arr) + '</p>');
+		document.write('<p>Does mySet have element "blue?: ' + mySet.has("blue") + '</p>');
+		mySet.clear();
+		document.write('<p>(mySet cleared)</p>');
+		document.write('<p>Size of set: ' + mySet.size + '</p>');
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript Scope - Example 3</title>
+	<script>
+		var v1 = 36;
+
+		function fun3() {
+			var v2 = "variable 2";
+		}
+	</script>
+</head>
+<body>
+	<h1>Scope Example 3</h1>
+	<p><em>This page generates an error</em></p>
+	<script>
+		document.write('v1: ' + v1);
+		document.write('<hr>');
+		fun3();
+		document.write('v2: ' + v2);
+	</script>
+</body>
+</html>

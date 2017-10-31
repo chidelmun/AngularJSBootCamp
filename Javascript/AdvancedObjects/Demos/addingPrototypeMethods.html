@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Prototyping: Adding Methods</title>
+	<script>
+		var Person = function(fname, lname, age) {
+			this.fname = fname;
+			this.lname = lname;
+			this.age = age;
+			this.fullName = function() {
+				return this.fname + ' ' + this.lname;
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Prototyping: Adding Methods</h1>
+	<script>
+		var jdoe = new Person('Jane', 'Doe', 32);
+		
+		Person.prototype.isOldEnoughToVote = function() {
+			return this.age >= 18;
+		}
+
+		Person.prototype.changeAge = function(age) {
+			//test if age is an integer:
+			if (!(Number(age) === age && age % 1 === 0)) {
+				return;
+			}
+			//test if age is >= 0
+			if (age <= 0) {
+				return;
+			}
+			this.age = age;
+		}
+
+		document.write('First name: ');
+		document.write(jdoe.fname);
+		document.write('<hr>');
+		document.write('Full name: ');
+		document.write(jdoe.fullName());
+		document.write('<hr>');
+		document.write('Old enough to vote? ');
+		document.write(jdoe.isOldEnoughToVote() ? 'yes' : 'no');
+
+		jdoe.changeAge(4);
+
+		document.write('<hr>');
+		document.write('Age: ');
+		document.write(jdoe.age);
+		document.write('<hr>');
+		document.write('Old enough to vote? ');
+		document.write(jdoe.isOldEnoughToVote() ? 'yes' : 'no');
+
+		jdoe.changeAge('stringnotanumber');
+
+		document.write('<hr>');
+		document.write('Age: ');
+		document.write(jdoe.age);
+		document.write('<hr>');
+		document.write('Old enough to vote? ');
+		document.write(jdoe.isOldEnoughToVote() ? 'yes' : 'no');
+	</script>
+</body>
+</html>

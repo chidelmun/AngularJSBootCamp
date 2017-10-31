@@ -1,0 +1,36 @@
+Application Type:
+ToDo Application
+
+Description:
+The application is used to manage a todo list
+
+Example Data Type:
+Item: {
+"title":"Buy groceries",
+"description":"Get eggs, lettuce, milk, bread, ...",
+"due":"9/9/2017",
+"done":true
+}
+
+Operations:
+- list todo items
+- create todo item
+- delete todo item
+- modify todo item
+- mark item as completed
+- mark all completed
+
+Views:
+- summary view: show statistics
+- list view: show [pending|completed|all]
+- detail view: show an individual item
+- about view: show description of app
+
+Screen Layout:
+view: (each view has this structure)
+- application header
+- navigation links
+- body of view
+- application footer
+
+

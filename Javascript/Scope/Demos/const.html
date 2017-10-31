@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Const</title>
+</head>
+<body>
+	<h1>Const Example</h1>
+	<p><em>This page generates an error if line 21 is uncommented</em></p>
+	<script>
+		let let1 = 'I am let';
+		const const1 = 'I am const';
+
+		document.write(let1);
+		document.write('<hr>');
+		document.write(const1);
+		document.write('<hr>');
+
+		let1 = 'I am changed let';
+		//the following line throws an exception:
+		//const1 = 'I am changed const';
+
+		const obj1 = {};
+		obj1.foo = 21;
+		document.write(obj1.foo);
+	</script>
+</body>
+</html>

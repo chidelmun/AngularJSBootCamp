@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Let</title>
+	<script>
+		var var1 = 'foo1';
+		let let1 = 'bar1';
+
+		function setVars() {
+			var var2 = 'foo2';
+			let let2 = 'bar2';
+		}
+
+		function forLoops() {
+			for(var var3=0; var3<10; var3++) {
+				//do something here
+			}
+			for(let let3=0; let3<10; let3++) {
+				//do something here
+			}
+			
+			/*
+				this would generate an error for
+				let3 but not for var3: var3 is scoped
+				to the enclosing function (forLoops) but
+				let3 is scoped to its enclosing block
+				(the for loop)
+			*/
+			document.write("var3 has value: " + var3);
+			document.write("<hr>");
+			document.write("let3 has value: " + let3);
+			document.write("<hr>");
+		}
+	</script>
+</head>
+<body>
+	<h1>Let Example</h1>
+	<p><em>This page generates errors</em></p>
+	<script>
+		/*
+			this would work: both var1 and let 1 have global scope
+		*/
+		document.write("var1 has value: " + var1);
+		document.write("<hr>");
+		document.write("let1 has value: " + let1);
+		document.write("<hr>");
+
+		setVars();
+
+		/*
+			this would generate an error - but the same error for both:
+			both var2 and let2 are scoped local to function setVars,
+			and thus not accessible here
+		*/
+		document.write("var2 has value: " + var2);
+		document.write("<hr>");
+		document.write("let2 has value: " + let2);
+		document.write("<hr>");
+
+		forLoops();
+	</script>
+</body>
+</html>

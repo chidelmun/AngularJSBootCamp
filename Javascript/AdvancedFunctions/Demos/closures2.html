@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Closures</title>
+</head>
+<body>
+	<h1>Closures</h1>
+	<p>The inner function "remembers" the value of the parameter with which its parent was called:</p>
+	<script>
+		function add(x){
+			return function(y) {
+				return x + y;
+			};
+		}
+		
+		var add5 = add(5);
+		document.write(add5(10));
+		document.write('<br>');
+		document.write(add5(7));
+		document.write('<hr>');
+
+		var add17 = add(17);
+		document.write(add17(2));
+		document.write('<br>');
+		document.write(add17(23));
+		document.write('<hr>');
+	</script>
+</body>
+</html>

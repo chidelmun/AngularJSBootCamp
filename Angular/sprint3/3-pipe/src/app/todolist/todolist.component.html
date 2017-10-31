@@ -1,0 +1,15 @@
+<div class='boxed'>
+  <h3>{{title}}</h3>
+  <input type=text [(ngModel)]='searchTerm' placeholder='enter search term' [disabled]="disableSearch" /><br />
+  <input type=checkbox value=false id="disable" [(ngModel)]='disableSearch' />
+  <label for=disable >Disable Search</label>
+  <div class=scroll >
+    <ul>
+      <li *ngFor='let item of (todolist | filter: searchTerm: "title": disableSearch ); let i = index;'>
+          <a [routerLink]="['/item', i]" routerLinkActive='active' >
+            {{item.title}}
+          </a>
+      </li>
+    </ul>
+  </div>
+</div>

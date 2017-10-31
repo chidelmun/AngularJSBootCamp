@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Scope: Functions inside Functions</title>
+	<script>
+		function writeIt(numTimes, multiple) {
+		    function doMultiplication(val, multiple) {
+		        var i = val * multiple;
+		        return i;
+		    }
+
+		    for (var i=0; i<numTimes; i++) {
+		        document.write(doMultiplication(i, multiple) + ' ');
+		    }
+		}
+	</script>
+</head>
+<body>
+	<h1>Scope Exercise</h1>
+	<script>
+		writeIt(5, 2);
+	</script>
+</body>
+</html>

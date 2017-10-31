@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript Scope - Example 1</title>
+	<script>
+		var v1 = 13;
+
+		function fun1() {
+			document.write("inside function fun1, v1 has value: " + v1);
+		}
+	</script>
+</head>
+<body>
+	<h1>Scope Example 1</h1>
+	<p><em>This page has no errors</em></p>
+	<script>
+		document.write("outside of functions, v1 has value: " + v1);
+		document.write("<hr>");
+		fun1();
+	</script>
+</body>
+</html>

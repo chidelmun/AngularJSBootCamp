@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CORS - Geonames</title>
+<style>
+	#responseContent {
+		width:66%;
+		padding:1% 2%;
+		background-color:#ccc;
+		margin-top:20px;
+	}
+	h2 {
+		margin:0;
+		padding:0;
+	}
+</style>
+<script>
+	window.onload = function() {
+		var btn = document.getElementById('btn');
+		var responseContent = document.getElementById('responseContent');
+
+		btn.addEventListener('click', function(e) {
+			//your code here
+		});
+	};
+</script>
+</head>
+<body>
+	<input type="text" id="countryabbr" placeholder="US">
+	<button id="btn">Fetch Country Info</button>
+	<br>
+	<div id="responseContent"></div>
+</body>
+</html>

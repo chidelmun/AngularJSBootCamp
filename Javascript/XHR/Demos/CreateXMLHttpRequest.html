@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+	function start() {
+		if (window.XMLHttpRequest) {
+			var xmlhttp = new XMLHttpRequest();
+			document.getElementById("Content").innerHTML =
+				"<h1>Using XMLHttpRequest Object</h1>";
+		} else {
+			var xmlhttp = false;
+			document.getElementById("Content").innerHTML =
+				"<h1>XMLHttp cannot be created!</h1>";
+		}
+	}
+
+	window.onload = function() {
+		var btn = document.getElementById("btnStart");
+		btn.addEventListener('click', start, false);
+	}
+</script>
+<title>XMLHttpRequest</title>
+</head>
+<body>
+	<button id="btnStart">Start</button>
+	<div id="Content"></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pets</title>
+	<script>
+		class Pet {
+			constructor(name, color) {
+				this.name = name;
+				this.color = color;
+				this.animaltype = 'animal';
+			}
+			toString() {
+				return this.name + ' - a ' + this.color + ' ' + this.animaltype;
+			}
+			speak() {
+				return 'ehh';
+			}
+		}
+
+		class Dog extends Pet {
+			constructor(name, color) {
+				super(name, color);
+				this.animaltype = 'dog';
+			}
+			speak() {
+				return 'woof';
+		    }
+		}
+
+		class Bird extends Pet {
+			constructor(name, color, wingspan) {
+				super(name, color);
+				this.animaltype = 'bird';
+				this.wingspan = wingspan;
+			}
+			toString() {
+				return this.name + ' - a ' + this.color + ' ' + this.animaltype + ' with wingspan of ' + this.wingspan + ' centimeters';
+		    }
+			speak() {
+				return 'cheep';
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Pets</h1>
+	<script>
+		var pet = new Pet('Cuddles', 'brown');
+		document.write(pet);
+		document.write('<br>');
+		document.write(pet.name + ' says "' + pet.speak() + '"');
+		document.write('<hr>');
+		var fido = new Dog('Fido', 'brown');
+		document.write(fido);
+		document.write('<br>');
+		document.write(fido.name + ' says "' + fido.speak() + '"');
+		document.write('<hr>');
+		var feathers = new Bird('Feathers', 'yellow', 7);
+		document.write(feathers);
+		document.write('<br>');
+		document.write(feathers.name + ' says "' + feathers.speak() + '"');
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div class='boxed' >
+  <h3>{{title}}</h3>
+  <ul>
+    <li *ngFor='let item of todolist; let i = index;'
+      (click)="onClick(i)"
+    >
+      {{item.title}}
+    </li>
+  </ul>
+</div>

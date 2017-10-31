@@ -1,0 +1,19 @@
+.WholeQuestion
+{
+	border-bottom: 1px solid darkblue;
+	margin-bottom:10px;
+	clear:left;
+	height:20px;
+	width:400px;
+}
+
+.Question, .Answer
+{
+	width:150px;
+	float:left;
+}
+
+.Result
+{
+	float:left;
+}

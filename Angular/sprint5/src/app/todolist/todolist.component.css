@@ -1,0 +1,27 @@
+.scroll {
+    height: 200px;
+    width: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color:black
+}      
+
+.search{
+    background-color: lightgrey;
+    padding: 5px;
+    font-size: .8em;
+}
+.todo{
+    color: blue;
+}
+.done{
+    color: grey;
+}
+
+li {
+    cursor: pointer;
+}

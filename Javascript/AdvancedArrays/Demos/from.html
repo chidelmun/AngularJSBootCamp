@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array.from</title>
+</head>
+<body>
+	<h1>Array.from</h1>
+	<p>sample markup code</p>
+	<ul>
+		<li>item 1</li>
+		<li>item 2</li>
+		<li>item 3</li>
+		<li>item 4</li>
+	</ul>
+	<script>
+		function arrayFromArguments() {
+			return Array.from(arguments);
+		}
+		// create array from the arguments supplied to a function:
+		document.write(arrayFromArguments(11, 21, -17));
+		document.write('<br>Array?: ' + Array.isArray(arrayFromArguments(11, 21, -17)));
+
+		document.write('<hr>');
+
+		var str = 'I am a string';
+		// create array from the characters in a string:
+		document.write(Array.from(str));
+		document.write('<br>Array?: ' + Array.isArray(Array.from(str)));
+
+		document.write('<hr>');
+
+		var m = new Map();
+		m.set(0, 'apple');
+		m.set(1, 'banana');
+		m.set(2, 'cherry');
+		// create multidimensional array from map:
+		document.write(Array.from(m));
+		console.log(Array.from(m));
+		document.write('<br>Array?: ' + Array.isArray(Array.from(m)));
+
+		document.write('<hr>');
+
+		// create array from collection of DOM elements:
+		document.write(Array.from(document.getElementsByTagName('li')));
+		document.write('<br>Array?: ' + Array.isArray(document.getElementsByTagName('li')));
+
+		document.write('<hr>');
+
+		// create array from array, with map function
+		document.write(Array.from([10, 20, 30], function(i) {
+			return i*i;
+		}));
+		document.write('<br>Array?: ' + Array.isArray(Array.from(str)));
+
+		document.write('<hr>');
+
+		// same as above, but using arrow function:
+		document.write(Array.from([10, 20, 30], i => i*i));
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Try/Catch</title>
+<style>
+    input.operator {
+        width:30px;
+    }
+    input#quotient {
+        width:100px;
+    }
+</style>
+<script type="text/javascript">
+    function DisplayAnswer() {
+        var dividendField = document.getElementById('dividend');
+        var divisorField = document.getElementById('divisor');
+        var msgField = document.getElementById('msg');
+
+        var dividend = dividendField.value;
+        var divisor = divisorField.value;
+        var quotient;
+
+        // your code here
+    }
+
+    window.onload = function() {
+        var equals = document.getElementById('equals');
+        equals.addEventListener('click', DisplayAnswer, false)
+    };
+
+</script>
+</head>
+<body>
+<input type="text" id="dividend" class="operator"> / <input type="text" id="divisor" class="operator"> <button id="equals">=</button>
+<div id="msg"></div>
+</body>
+</html>

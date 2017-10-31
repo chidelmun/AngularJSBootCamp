@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Guessing Game</title>
+	<style>
+		body {
+			background:#ccc;
+		}
+		#main {
+			background:#eee;
+			width:79%;
+			padding:2% 5%;
+			margin:20px auto;
+		}
+		h1 {
+			margin:0 0 10px 0;
+		}
+		div#word {
+			float:left;
+			width:30%;
+		}
+		div#word div  {
+			background:#fff;
+			height:35px;
+			width:30px;
+			line-height:30px;
+			font-size:30px;
+			float:left;
+			margin-right:5px;
+			border:1px solid #000;
+			text-align: center;
+		}
+		div#letters {
+			float:right;
+			width:69%;
+		}
+
+		div#letters a {
+			display:block;
+			padding:5px;
+			font-size:28px;
+			color:#000;
+			text-decoration: none;
+			float:left;
+		}
+		footer {
+			clear:both;
+			text-align: center;
+			font-size:30px;
+		}
+	</style>
+	<script>
+		var lettersNotGuessed, wordToGuess, userGuess;
+
+		function displayWord(userGuessMap) {
+			var wordHTML = '';
+			/*
+				iterate over userGuessMap (the userGuess Map)
+				and create append a <div> containing each letter
+				to wordHTML
+			*/
+			document.getElementById('word').innerHTML = wordHTML;
+		}
+
+		function displayLettersToGuess(lettersNotGuessedSet) {
+			var lettersHTML = '';
+			for (let letter of lettersNotGuessedSet) {
+				lettersHTML += '<a href="#" id="' + letter + '" class="letter">' + letter + '</a>';
+			}
+			document.getElementById('letters').innerHTML = lettersHTML;
+		}
+
+		function isWin(userGuessMap) {
+			/*
+				iterate over userGuessMap (the userGuess Map) and return
+				true if there are no spaces; otherwise return false
+			*/
+		}
+
+		function doGuess(e) {
+			e.preventDefault();
+		    var letter = e.target.getAttribute("id");
+
+		    // remove the letter from lettersNotGuessed
+		    
+		    // update the display of letters to guess (now missing the letter the user just guessed)
+
+		    /*
+		    	iterate over wordToGuess and change the space to the letter the user
+		    	guessed, if the letter exists
+		    */
+		    
+			// update the displayed word with the potentially-successfully-guessed
+
+			if (isWin(userGuess)) {
+				document.getElementById('footer').innerHTML = 'You Win!';
+			}
+		};
+
+		window.onload = function() {
+			var possibleWords = ['apple','banana','pear'];
+			var wordToGuessString = possibleWords[Math.floor(Math.random()*possibleWords.length)];
+			wordToGuess = new Map(Array.from(wordToGuessString).entries());
+			userGuess = new Map();
+			for(let i=0; i<wordToGuess.size; i++) {
+				userGuess.set(i, ' ');
+			}
+			displayWord(userGuess);
+			lettersNotGuessed = new Set('abcdefghijklmnopqrstuvwxyz');
+			displayLettersToGuess(lettersNotGuessed);
+
+			document.querySelector('body').addEventListener('click', function(e) {
+				if (e.target.tagName.toLowerCase() === 'a') {
+					doGuess(e);
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="main">
+		<h1>Guessing Game</h1>
+		<div id="word"></div>
+		<div id="letters"></div>
+		<footer id="footer"></footer>
+	</div>
+</body>
+</html>

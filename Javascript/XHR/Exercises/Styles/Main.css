@@ -1,0 +1,41 @@
+.Warning {
+	color:red; font-weight:bold;
+}
+
+h2 { 
+	margin:0px; 
+}
+
+#MessageDiv {
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-50px;
+	width:100px;
+	padding:10px;
+	text-align:center;
+	font-size:14pt;
+	font-weight:bold;
+	border-width:3px;
+	color: red;
+	display:none;
+}
+
+#FormDiv {
+	float:right; 
+	margin-top:20px;
+	margin-right:50px; 
+	border:1px solid darkblue; 
+	padding:4px; 
+	display:none;
+}
+
+#EmployeeList {
+	float:left;
+}
+
+#EmployeeList li {
+	color:blue;
+	text-decoration:underline;
+	cursor:pointer;	
+}

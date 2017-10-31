@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Company Fleet</title>
+	<style>
+		form#addVehicle {
+			float:left;
+			width:48%;
+		}
+		div#info {
+			float:right;
+			width:48%;
+		}
+	</style>
+	<script>
+		var Vehicle = function(vehicleType, yearPurchased, VIN) {
+			this.vehicleType = vehicleType;
+			this.yearPurchased = yearPurchased;
+			this.VIN = VIN; //vehicle identification number
+			this.toString = function() {
+				return this.vehicleType + ', purchased ' + this.yearPurchased + ', VIN: ' + this.VIN;
+			}
+		}
+
+		var Fleet = function(companyName) {
+			this.companyName = companyName;
+			this.vehicles = [];
+			this.addVehicle = function(vehicle) {
+				this.vehicles.push(vehicle);
+			}
+			this.toString = function() {
+				var str = 'Current fleet for <strong>' + this.companyName + '</strong>:';
+				str += '<ul>';
+				for (let v in this.vehicles) {
+					let vehicle = this.vehicles[v];
+					str += '<li>' + vehicle + '</li>';
+				}
+				str += '</ul>';
+				return str;
+			}
+			this.averageAgeOfVehicles = function() {
+				if (this.vehicles.length === 0) {
+					return 0;
+				}
+				var yearSum = 0;
+				for (let v in this.vehicles) {
+					let vehicle = this.vehicles[v];
+					yearSum += parseInt(vehicle.yearPurchased);
+				}
+				var averageYear = parseInt(yearSum / this.vehicles.length);
+				var curYear = new Date().getFullYear();
+				return curYear - averageYear;
+			}
+		}
+
+		function clearFields() {
+			document.getElementById('vehicleType').value = '';
+			document.getElementById('yearPurchased').value = '';
+			document.getElementById('VIN').value = '';
+		}
+
+		window.onload = function() {
+			var companyFleet = new Fleet('ABC, Inc.');
+			document.getElementById('currentFleetInfo').innerHTML = companyFleet;
+
+			var addVehicleForm = document.getElementById('addVehicle');
+			addVehicleForm.addEventListener('submit',
+				function(event) {
+					event.preventDefault();
+					var vehicleType = document.getElementById('vehicleType').value;
+					var yearPurchased = document.getElementById('yearPurchased').value;
+					var VIN = document.getElementById('VIN').value;
+					companyFleet.addVehicle(new Vehicle(vehicleType, yearPurchased, VIN));
+					document.getElementById('currentFleetInfo').innerHTML = companyFleet;
+					clearFields();
+				},
+				false);
+			var getAverageAgeButton = document.getElementById('getAverageAge');
+			getAverageAgeButton.addEventListener('click',
+				function() {
+					var averageAge = companyFleet.averageAgeOfVehicles();
+					alert('The average age of all vehicles is ' + averageAge + ' years');
+				},
+				false);
+		}
+	</script>
+</head>
+<body>
+	<h1>Company Fleet</h1>
+	<form id="addVehicle">
+		<select id="vehicleType">
+			<option value="">-vehicle type-</option>
+			<option value="car">car</option>
+			<option value="van">van</option>
+			<option value="truck">truck</option>
+			<option value="bus">bus</option>
+		</select>
+		<input type="text" id="yearPurchased" placeholder="year purchased">
+		<input type="text" id="VIN" placeholder="VIN">
+		<input type="submit" value="Add Vehicle">
+	</form>
+	<div id="info">
+		<div id="currentFleetInfo"></div>
+		<button id="getAverageAge">Average Age of Vehicles</button>
+	</div>
+</body>
+</html>

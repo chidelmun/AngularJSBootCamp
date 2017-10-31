@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Div Click 2</title>
+	<style>
+		div {
+			width:100px;
+			height:100px;
+			float:left;
+			margin-right:10px;
+			border:1px solid #ff7800;
+			background:#eee;
+			text-align: center;
+			font-size:28px;
+			line-height: 100px;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			var divs = document.getElementsByTagName('div');
+			for (var i=0; i<divs.length; i++ ) {
+				(function(i) {
+					divs[i].addEventListener('click', function(e) {
+						e.preventDefault();
+						alert('you clicked div ' + i);
+					}, 'false');
+				})(i);
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Div Click 2</h1>
+	<div>0</div>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+</body>
+</html>

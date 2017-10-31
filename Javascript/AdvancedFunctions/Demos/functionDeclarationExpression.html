@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Function Declarations &amp; Expressions</title>
+</head>
+<body>
+	<h1>Function Declarations &amp; Expressions</h1>
+	<script>
+		document.write(funDeclaration(10) + ' ');
+		function funDeclaration(x) {
+			return x + 17;
+		}
+		document.write(funDeclaration(2));
+
+		document.write('<hr>');
+		
+		//document.write(funExpression(3) + ' ');
+		var funExpression = function(y) {
+			return y * y;
+		}
+		document.write(funExpression(9));
+	</script>
+</body>
+</html>

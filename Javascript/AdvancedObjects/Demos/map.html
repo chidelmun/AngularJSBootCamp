@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Map</title>
+</head>
+<body>
+	<h1>Map</h1>
+	<script>
+		class Person {
+			constructor(fname, lname, age) {
+				this.fname = fname;
+				this.lname = lname;
+				this.age = age;
+			}
+			toString() {
+				return this.fname + ' ' + this.lname;
+			}
+		}
+
+		var p = new Person('Jane','Doe',31);
+		var arr = ['one', 'two', 'three'];
+		var myMap = new Map();
+		myMap.set(1, "black");
+		myMap.set("lemonade", 2);
+		myMap.set(p, 3);
+		myMap.set(47, arr);
+		myMap.set(1, "red");
+
+		document.write('<ul>');
+		myMap.forEach(function (value, key, map) {
+			document.write('<li>');
+			document.write(key.toString() + ' - ' + value.toString());
+			document.write('</li>');
+		});
+		document.write('</ul>');
+
+		document.write('<p>Size of map: ' + myMap.size + '</p>');
+		document.write('<p>Get element with Person key: ' + myMap.get(p) + '</p>');
+		document.write('<p>Does myMap have element with key Person p?: ' + myMap.has(p) + '</p>');
+		document.write('<p>Does myMap have element with key 15?: ' + myMap.has(15) + '</p>');
+		myMap.clear();
+		document.write('<p>(myMap cleared)</p>');
+		document.write('<p>Size of map: ' + myMap.size + '</p>');
+	</script>
+</body>
+</html>

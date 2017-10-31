@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CORS - Geonames</title>
+<style>
+	#responseContent {
+		width:66%;
+		padding:1% 2%;
+		background-color:#ccc;
+		margin-top:20px;
+	}
+	h2 {
+		margin:0;
+		padding:0;
+	}
+</style>
+<script>
+	window.onload = function() {
+		var btn = document.getElementById('btn');
+		var responseContent = document.getElementById('responseContent');
+
+		btn.addEventListener('click', function(e) {
+			responseContent.innerHTML = '<h2>Response Content</h2>';
+			var country = document.getElementById('countryabbr').value;
+
+			var xmlhttp = new XMLHttpRequest();
+
+			xmlhttp.open("GET", "http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=" + country + "&username=webucator&style=full", true);
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4) {
+					if (xmlhttp.status == 200) {
+						var jsonResponse = JSON.parse(xmlhttp.responseText);
+						if (jsonResponse.geonames.length > 0) {
+							responseContent.innerHTML += '<p>';
+							responseContent.innerHTML += 'Name: ' + jsonResponse.geonames[0].countryName + '<br>';
+							responseContent.innerHTML += 'Currency Code: ' + jsonResponse.geonames[0].currencyCode + '<br>';
+							responseContent.innerHTML += 'Capital City: ' + jsonResponse.geonames[0].capital + '<br>';
+							responseContent.innerHTML += 'Population: ' + jsonResponse.geonames[0].population + '<br>';
+							responseContent.innerHTML += '</p>';
+						} else {
+							responseContent.innerHTML += '<p><em>Country not found</em></p>';
+						}
+					} else {
+						alert("failed!");
+					}
+				}
+			}
+			xmlhttp.send(null);
+		});
+	};
+</script>
+</head>
+<body>
+	<input type="text" id="countryabbr" placeholder="US">
+	<button id="btn">Fetch Country Info</button>
+	<br>
+	<div id="responseContent"></div>
+</body>
+</html>

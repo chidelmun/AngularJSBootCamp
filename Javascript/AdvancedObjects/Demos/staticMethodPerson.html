@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Class</title>
+	<script>
+		class Person {
+			constructor(fname, lname, age) {
+				this.fname = fname;
+				this.lname = lname;
+				this.age = age;
+			}
+			toString() {
+				return this.fname + ' ' + this.lname;
+			}
+			static possibleParentChild(p1, p2) {
+				if (p1.lname !== p2.lname) {
+					return false;
+				}
+				if (Math.abs(p1.age - p2.age) < 18) {
+					return false;
+				}
+				return true;
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Class</h1>
+	<script>
+		var jdoe = new Person('Jane', 'Doe', 32);
+		var afung = new Person('Adam', 'Fung', 11);
+		var mdoe = new Person('Maria', 'Doe', 13);
+		
+		if (Person.possibleParentChild(jdoe, mdoe)) {
+			document.write(jdoe + ' and ' + mdoe + ' might be parent/child');
+		} else {
+			document.write(jdoe + ' and ' + mdoe + ' are likely not parent/child');
+		}
+	</script>
+</body>
+</html>

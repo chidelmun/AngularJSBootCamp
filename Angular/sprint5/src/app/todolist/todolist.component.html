@@ -1,0 +1,26 @@
+<div class='boxed'>
+  <h3>{{title}}</h3>
+  <div class='search' >
+  <input type=text [(ngModel)]='searchTerm' placeholder='enter search term' />
+  <input type=checkbox value=false id="apply" [(ngModel)]='applySearch' />
+  <label for=apply >Apply Search</label>
+
+  <input type=checkbox value=false id="showcomp" [(ngModel)]='showCompleted' />
+  <label for=showcomp >Show Completed</label>
+  
+  </div>
+  <div class=scroll >
+    <ul>
+      <li *ngFor='let item of 
+                  (todolist | search: searchTerm: "title": applySearch
+                   |filter : showCompleted ); let i = index;'>
+          <a [routerLink]="['/item', item.id]" 
+             routerLinkActive='active' 
+             [ngClass] = '{todo: !item.done, done: item.done }' >
+            {{item.id|number:"3.0-0"}}-{{ (item.done?'x':'o') }}:&nbsp;{{item.title}}
+          </a>
+      </li>
+    </ul>
+  </div>
+  <app-todoadd (newtodo)="onNewTodo($event)" ></app-todoadd>
+</div>

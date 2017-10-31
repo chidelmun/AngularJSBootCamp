@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Nested Anonymous Function Example</title>
+	<script>
+		function createIDs(arr) {
+		    var startingVal = 10;
+		    for (var p=0; p<arr.length; p++) {
+		      	arr[p]["UID"] = function() {
+		      		return startingVal + p;
+		      	}
+		    }
+		    return arr;
+		}
+	</script>
+</head>
+<body>
+	<h1>Nested Anonymous Function Example</h1>
+	<script>
+		var people = [
+						{fname:"Jane",lname:"Doe",UID:0},
+					 	{fname:"Carly",lname:"Gutierrez",UID:0},
+					 	{fname:"James",lname:"Chan",UID:0}
+					 ];
+		var peopleWithUniqueIDs = createIDs(people);
+		for (var i=0; i<peopleWithUniqueIDs.length; i++) {
+			document.write(peopleWithUniqueIDs[i]["fname"] + ' ' + peopleWithUniqueIDs[i]["fname"] + ", ID: " + peopleWithUniqueIDs[i].UID());
+			document.write('<hr>');
+		}
+	</script>
+</body>
+</html>

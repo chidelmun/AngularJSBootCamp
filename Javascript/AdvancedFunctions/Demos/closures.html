@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Closures</title>
+</head>
+<body>
+	<h1>Closures</h1>
+	<script>
+		function counter(x) {
+			return {
+				increment: function() {
+					x = x + 1;
+				},
+				get: function() {
+					return x;
+				}
+			}
+		};
+
+		var mycounter = counter(3);
+		document.write(mycounter.get()); // writes 3
+		mycounter.increment();
+		mycounter.increment();
+		document.write('<br>' + mycounter.get()); // writes 5
+		// document.write(x); // this would generate an "x is not defined error"
+		x = 14;
+		document.write('<br>' + mycounter.get()); // writes 5
+	</script>
+</body>
+</html>

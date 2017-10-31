@@ -1,0 +1,14 @@
+{
+  "name": "modules",
+  "version": "1.0.0",
+  "description": "Modules in ES2015",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "webpack": "^2.2.1"
+  }
+}

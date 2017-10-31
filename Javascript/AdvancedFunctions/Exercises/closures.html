@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Closures</title>
+	<script>
+		function bankAccount(ownerName) {
+			/*
+				add two local variables:
+				
+					balance, initially set to 0
+				
+					ownerName, set to the value passed in
+
+				the function should return an object with the following fields as function:
+
+					withdrawal, which accepts an amount to withdraw and decrememts balance
+
+					deposit, which accepts an amount to deposit and increments balance
+
+					getBalance, which returns the current balance
+
+					getOwnerName, which returns the owner's name
+
+				add validations:
+
+					ensure that a withdrawal can't be made for more than the current balance and must be > 0
+
+					ensure that a deposit must be > 0
+
+			*/
+
+		}
+	</script>
+</head>
+<body>
+	<h1>Closures</h1>
+	<script>
+		var myAccount = bankAccount('Jane Doe');
+		myAccount.deposit(100);
+		document.write('Current balance: $' + myAccount.getBalance()); // 100
+		myAccount.withdrawal(75);
+		document.write('<br>Current balance: $' + myAccount.getBalance()); // 25
+		myAccount.withdrawal(2000); // this shouldn't work, since 2000 > current balance
+		document.write('<br>Current balance: $' + myAccount.getBalance()); // 25
+		myAccount.deposit(-2); // this shouldn't work, since -2 <= 0
+		document.write('<br>Current balance: $' + myAccount.getBalance()); // 25
+		document.write('<br>Account owner: ' + myAccount.getOwnerName()); // Jane Doe
+	</script>
+</body>
+</html>

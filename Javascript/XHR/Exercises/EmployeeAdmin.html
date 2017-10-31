@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee Administration</title>
+<link rel="stylesheet" type="text/css" href="Styles/Main.css">
+<script type="text/javascript">
+	function getEmployeeList(url) {
+		var xmlhttp = new XMLHttpRequest();
+		var output = document.getElementById("EmployeeList");
+		output.innerHTML = "<h2>Loading...</h2>";
+		/*
+			Using the xmlhttp object created above
+			send an http request using the GET method
+			and the passed-in URL.
+			
+			When the readystate changes call the display()
+			function with the appropriate parameters.
+		*/
+	}
+
+	function display(output, xmlhttp) {
+		var employees, eid, target, i;
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			output.style.display = "block";
+			/*
+				Set the innerHTML property of the output div
+				to the response text.
+			*/
+
+			if (xmlhttp.responseText.indexOf("Failed") == 0) {
+				output.className = "Warning";
+			} else {
+				employees = output.getElementsByTagName("li");
+				for (i = 0; i < employees.length; ++i) {
+					employees[i].addEventListener('click', function(e) {
+						target = e.target;
+						eid = target.id.substring(3);
+						getEmployeeForm("EmployeeForm", eid);
+					});
+				}
+			}
+		}
+	}
+
+	function getEmployeeForm(url, eid) {
+		var xmlhttp = new XMLHttpRequest();
+		var output = document.getElementById("FormDiv");
+		var fields, field, value, i;
+		output.innerHTML = "Loading...";
+		xmlhttp.open("POST", url, true);
+		xmlhttp.onreadystatechange = function() {
+				display(output, xmlhttp);
+				fields = output.getElementsByTagName("input");
+				for (i = 0; i < fields.length; ++i) {
+					fields[i].addEventListener('change', function(e) {
+						target = e.target;
+						field = target.name;
+						value = target.value;
+						updateEmployee("EditEmployee", field, value, eid);
+					});
+				}
+			}
+			/*
+				Set the appropriate content type for submitting form data
+				and send the request. The server code is expecting a parameter
+				named eid, with the employee id we received.
+			*/
+	}
+
+	function updateEmployee(url, field, value, eid) {
+		/*
+			Write the code leading up to the call to send() below.
+			The callback function for the readystatechange 
+			should be: employeeUpdated
+		*/
+		xmlhttp.send("eid=" + eid + "&field=" + field + "&value=" + value);
+
+		function employeeUpdated() {
+			var msg;
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				msg = document.getElementById("MessageDiv");
+				if (xmlhttp.responseText.indexOf("Failed") == 0) {
+					msg.className = "Warning";
+					msg.innerHTML = xmlhttp.responseText;
+				} else {
+					msg.innerHTML = "Updated!";
+					getEmployeeList('EmployeeList');
+				}
+				fadeElem(msg, 255, 255, 0, 255, 255, 255);
+			}
+		}
+	}
+
+	window.onload = function() {
+		getEmployeeList("EmployeeList");
+	};
+</script>
+</head>
+<body>
+	<h1>Employee Administration</h1>
+	<p>Click employee name to modify.</p>
+	<div id="EmployeeList"></div>
+	<div id="FormDiv"></div>
+	<div id="MessageDiv"></div>
+</body>
+</html>

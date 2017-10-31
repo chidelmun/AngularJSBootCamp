@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array.prototype.forEach</title>
+</head>
+<body>
+	<h1>Array.prototype.forEach</h1>
+	<script>
+		var nums = [2, 33, 92, 1, 20, 57, 41, 7];
+
+		function writeInfoAsListItem(value, i, arr) {
+			document.write('<li>');
+			document.write(value + ' at position ' + i + (i < arr.length/2 ? ' (1st half)' : ' (2nd half)'));
+			document.write('</li>');
+		}
+
+		document.write('<ul>');
+		nums.forEach(writeInfoAsListItem);
+		document.write('</ul>');
+	</script>
+</body>
+</html>

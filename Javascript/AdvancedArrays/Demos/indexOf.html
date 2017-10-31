@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Array.prototype.indexOf</title>
+</head>
+<body>
+	<h1>Array.prototype.indexOf</h1>
+	<script>
+		var nums = [2, 32, 92, 1, 2, 20, 57, 32, 2, 41, 7];
+
+		document.write(nums.indexOf(32)); // returns 1
+		document.write('<hr>');
+		document.write(nums.indexOf(92, 5)); // returns -1
+		document.write('<hr>');
+		document.write(nums.indexOf(547)); // returns -1
+
+		document.write('<hr>');
+
+		function unique(arr) {
+			var arrayOfUnique = [];
+
+			arr.forEach(function(currentElement) {
+				if (arrayOfUnique.indexOf(currentElement) == -1) {
+					arrayOfUnique.push(currentElement);
+				}
+			});
+			
+			return arrayOfUnique;
+		}
+
+		document.write('Original array: ' + nums);
+		document.write('<br>Unique elements: ' + unique(nums));
+
+		
+
+	</script>
+</body>
+</html>

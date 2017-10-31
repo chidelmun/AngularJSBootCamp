@@ -1,0 +1,29 @@
+<div class='boxed'>
+  <h3>Todo Item</h3>
+  <table>
+    <tr>
+      <td class=right >Id:</td>
+      <td>{{item.id}}</td>
+    </tr>
+    <tr>
+      <td class=right >Title:</td>
+      <td><input type=text class="form-control" [(ngModel)]='item.title' /></td>
+    </tr>
+    <tr>
+      <td class=right >Done:</td>
+      <td><input type=checkbox [(ngModel)]='item.done' /></td>
+    </tr>
+    <tr>
+      <td class=right >Due:</td>
+      <td><input type=text class="form-control" [(ngModel)]='item.due' /></td>
+    </tr>
+    <tr>
+      <td class=right >Desc:</td>
+      <td><textarea class="form-control" cols="30" rows="5" spellcheck=false [(ngModel)]='item.description'></textarea>
+      </td>
+    </tr>
+  </table>
+  <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+  <button class="btn btn-primary" (click)="onSave()">Save</button>
+  <button class="btn btn-warning" (click)="onCancel()">Cancel</button>
+</div>

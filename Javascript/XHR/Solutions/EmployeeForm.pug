@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    title EmployeeForm
+
+  body
+    h2 Edit Employee
+    form(onsubmit="return false")
+      table
+        tr
+          td First Name:
+          td
+            input(type="text" name="FirstName" value=employee.FirstName)
+        tr
+          td Last Name:
+          td
+            input(type="text" name="LastName" value=employee.LastName)
+        tr
+          td Title:
+          td
+            input(type="text" name="Title" value=employee.Title)
+        tr
+          td Extension:
+          td
+            input(type="text" name="Extension" value=employee.Extension)
