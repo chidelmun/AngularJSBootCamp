@@ -29,6 +29,29 @@
 					ensure that a deposit must be > 0
 
 			*/
+			var balance = 0;
+			var ownerName = ownerName;
+
+			return {
+				withdrawal : function(amount){
+					if(amount > balance){
+						alert("Cannot withdraw more than balance");
+						return false;
+					}
+					balance -= amount;
+					return true
+				},
+				deposit : function(amount){
+					balance += amount;
+				},
+				getBalance : function(){
+					return balance;
+				},
+				getOwnerName : function(){
+					return ownerName;
+				}
+
+			};
 
 		}
 	</script>
@@ -46,6 +69,7 @@
 		myAccount.deposit(-2); // this shouldn't work, since -2 <= 0
 		document.write('<br>Current balance: $' + myAccount.getBalance()); // 25
 		document.write('<br>Account owner: ' + myAccount.getOwnerName()); // Jane Doe
+		
 	</script>
 </body>
 </html>

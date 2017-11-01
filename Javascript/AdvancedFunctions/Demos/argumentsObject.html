@@ -25,6 +25,25 @@
 		document.write(formatAsList('ul'));
 		document.write('<hr>');
 		document.write(formatAsList('ol','red','green','blue','orange'));
+
+		function defParams(){
+			var res = 0;
+			for(var i =0; i<arguments.length;i++){
+				res += arguments[i];
+			}
+			return res;
+		}
+		document.write('<hr>');
+		document.write(defParams(1,3,9,0,4, -22));
+
+		var list = [2,8,6,0,8,2,10,6];
+
+		var tst = list.every(function(element){		// check if every element in array is prime
+			return element % 2 == 0;
+		});
+
+		document.write('<hr>');
+		document.write(tst);
 	</script>
 </body>
 </html>

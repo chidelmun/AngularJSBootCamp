@@ -22,13 +22,23 @@
 			}
 		}
 
+		function fact(x){
+			if(x == 0 ){
+				return 1;
+			}else{
+				return x * fact(x-1);
+			}
+		}
+
 		window.onload = function() {
 			var result = document.getElementById('result');
 			document.getElementById('doFactorial').addEventListener('click', function(e) {
 				var num = parseInt(document.getElementById('num').value);
-				result.value = factorial(num);
+				result.value = fact(num);
 			}, 'false');
 		}
+
+		
 		
 	</script>
 </head>

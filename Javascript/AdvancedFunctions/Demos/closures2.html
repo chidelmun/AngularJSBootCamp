@@ -25,6 +25,34 @@
 		document.write('<br>');
 		document.write(add17(23));
 		document.write('<hr>');
+		document.write(add17(3));
+		document.write('<hr>');
+		document.write(add17(23));
+		document.write('<hr>');
+
+		 function sub(x){
+		 	return function(y){
+		 		return x - y;
+		 	}
+		 }
+
+		 var sub1 = sub(100);
+		 document.write("<hr>" + sub1(5));
+		 document.write("<hr>" + sub1(25));
+		 document.write("<hr>" + sub1(2));
+		 document.write("<hr>" + sub1(2));
+		 document.write("<hr>" + sub1(2));
+
+		 Number.prototype.compareTo = function(x){
+		 	return function(y){
+		 		return x == y;
+		 	}
+		 }
+
+		var numb = parseInt().compareTo(23); 
+		document.write("<br>" + numb(23));
+		document.write('<hr>');
+
 	</script>
 </body>
 </html>

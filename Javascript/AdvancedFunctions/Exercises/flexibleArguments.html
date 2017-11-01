@@ -7,13 +7,58 @@
 <body>
 	<h1>Flexible Arguments</h1>
 	<script>
-		function stats(maxOrMin) {
+		function stats(maxOrMin) {				// By default, min version is called
 			// write body of function here
+			var nums = Array.from(arguments).splice(1);
+			var res = nums[0];
+			switch(maxOrMin){
+				case 'max':
+				alert('Max');
+				break;
+				case 'min':
+				alert('MIN');
+				break;
+				default:
+				alert("Default");
+				break
+			}
+
+			// if(arguments[0] == "max"){
+			// 	for(let i in nums){
+			// 		if(nums[i] > res){
+			// 			res = nums[i];
+			// 		}
+			// 		continue;
+			// 	}
+			// }
+
+			// if(arguments[0] == "min"){
+			// 	for(let i in nums){
+			// 		if(nums[i] < res){
+			// 			res = nums[i];
+			// 		}
+			// 		continue;
+			// 	}
+			// }
+			// else{
+			// 	for(let i in nums){
+			// 		if(nums[i] > res){
+			// 			res = nums[i];
+			// 		}
+			// 		continue;
+			// 	}	
+			// }
+			
+			return res
 		}
 
-		document.write(stats('max', 3, 49, 20, -3, 17));
+		// document.write(stats('max', 3, 49, 20, -3, 17));
+		// document.write('<hr>');
+		// document.write(stats('min', 3, 49, 20, -3, 17));
+		// document.write('<hr>');
+		// document.write(stats('min', 22, 11, 38, -3, 17));
 		document.write('<hr>');
-		document.write(stats('min', 22, 11, 38, -3, 17));
+		document.write(stats(22,-19,44,256,-19,700));
 	</script>
 </body>
 </html>

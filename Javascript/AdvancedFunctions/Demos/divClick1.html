@@ -19,7 +19,7 @@
 	<script>
 		window.onload = function() {
 			var divs = document.getElementsByTagName('div');
-			for (var i=0; i<divs.length; i++) {
+			for (var i=0; i<divs.length; i++) {						// changine var to let fixes problem
 				divs[i].addEventListener('click', function(e) {
 					e.preventDefault();
 					alert('you clicked div ' + i);

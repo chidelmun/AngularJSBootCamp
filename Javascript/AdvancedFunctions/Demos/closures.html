@@ -18,6 +18,22 @@
 			}
 		};
 
+		function tracker(x){
+			return {
+				add : function(){
+					x+=1;
+				},
+				get : function(){
+					return x;
+				},
+				init : function(){
+					x = 0;
+				}
+			};
+		}
+
+		
+
 		var mycounter = counter(3);
 		document.write(mycounter.get()); // writes 3
 		mycounter.increment();
@@ -26,6 +42,14 @@
 		// document.write(x); // this would generate an "x is not defined error"
 		x = 14;
 		document.write('<br>' + mycounter.get()); // writes 5
+
+		var val = tracker(9);
+		 val.add();
+		document.write('<br>' + val.get());
+		val.init();
+		document.write('<br>' + val.get());
+
+
 	</script>
 </body>
 </html>

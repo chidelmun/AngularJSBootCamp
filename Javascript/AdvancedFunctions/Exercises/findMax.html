@@ -16,6 +16,17 @@
 	<script>
 		function findMax(arr) {
 			// write body of function here
+			if(arr.length == 1){
+				return arr[0];
+			}else{
+				var x = arr[0];
+				var y = findMax(arr.splice(1));
+				if(x > y){
+					return x;
+				}else{
+					return y;
+				}
+			}
 		}
 
 		window.onload = function() {
@@ -23,9 +34,11 @@
 			var arrayDisplay = document.getElementById('arrayDisplay');
 			arrayDisplay.innerHTML = '';
 			for(var i=0; i<10; i++) {
-				var randomNum = // generate a random number
+				var randomNum = Math.round(Math.random() * 100); // generate a random number
 				// add randomNum to the array a
 				// display randomNum in the innerHTML of the #arrayDisplay div
+				a.push(randomNum);
+				arrayDisplay.innerHTML +=  randomNum + ',';
 			}
 
 			var resultDisplay = document.getElementById('resultDisplay');
