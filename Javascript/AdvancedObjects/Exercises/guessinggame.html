@@ -60,6 +60,10 @@
 				and create append a <div> containing each letter
 				to wordHTML
 			*/
+			
+			userGuessMap.forEach(function(value, key, map){
+					wordHTML +=  "<div>"+  value + "</div>";
+			});
 			document.getElementById('word').innerHTML = wordHTML;
 		}
 
@@ -76,6 +80,12 @@
 				iterate over userGuessMap (the userGuess Map) and return
 				true if there are no spaces; otherwise return false
 			*/
+			userGuessMap.forEach(function(value, key, map){
+				if(value == " "){
+					return false;
+				}
+				return true;
+			});
 		}
 
 		function doGuess(e) {
@@ -83,15 +93,28 @@
 		    var letter = e.target.getAttribute("id");
 
 		    // remove the letter from lettersNotGuessed
+
+		    lettersNotGuessed.delete(letter);
 		    
 		    // update the display of letters to guess (now missing the letter the user just guessed)
 
+		    displayLettersToGuess(lettersNotGuessed);
 		    /*
 		    	iterate over wordToGuess and change the space to the letter the user
 		    	guessed, if the letter exists
 		    */
+
+		    wordToGuess.forEach(function(value, key, map){
+		    	if(value == letter){
+		    		userGuess.set(key, letter);
+		    	}
+		    	
+		    });
 		    
 			// update the displayed word with the potentially-successfully-guessed
+
+			displayWord(userGuess);
+
 
 			if (isWin(userGuess)) {
 				document.getElementById('footer').innerHTML = 'You Win!';

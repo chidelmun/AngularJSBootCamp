@@ -18,9 +18,16 @@
 		document.write('<p>Does mySet have element 1?: ' + mySet.has(1) + '</p>');
 		document.write('<p>Does mySet have element arr?: ' + mySet.has(arr) + '</p>');
 		document.write('<p>Does mySet have element "blue?: ' + mySet.has("blue") + '</p>');
-		mySet.clear();
+
+		document.write("**** Printing set items *****");
+		mySet.forEach(function(item){
+			document.write("<hr>" + item + "<br>");
+		});
+		document.write("**** <br> <hr>End of set items *****");
+		//mySet.clear();
 		document.write('<p>(mySet cleared)</p>');
 		document.write('<p>Size of set: ' + mySet.size + '</p>');
+		document.write(mySet.has('lemonade'));
 	</script>
 </body>
 </html>

@@ -49,6 +49,33 @@
 				return str;
 			}
 		}
+
+		class League{
+			constructor(name, sport){
+				this.leagueName = name;
+				this.sport = sport;
+				this.teams = [];
+			}
+
+			addTeam(team){
+				if(team.sport == this.sport){
+					this.teams.push(team);
+					return true;
+				}
+				return false;
+			}
+
+			toString(){
+				var str = "Teams : ";
+				str += this.leagueName + ' ' + this.sport;
+
+				for(let t in this.teams){
+					let team = this.teams[t];
+					str+= team.toString();
+				}
+				return str;
+			}
+		}
 	</script>
 </head>
 <body>
@@ -59,6 +86,8 @@
 		var afung = new Person('Adam', 'Fung', 23);
 		
 		var Tigers = new Team('The Tigers', 'soccer');
+		var rangers = new Team('The Rangers', 'soccer');
+		var bulls = new Team('The Bull dogs', 'tennis');
 		if (!Tigers.addPlayer(jdoe)) {
 			alert('player not added - too young');
 		}
@@ -69,8 +98,24 @@
 			alert('player ' + afung + ' not added - too young');
 		}
 
+		var liga = new League("La Liga", 'soccer');
+
+		if(!liga.addTeam(Tigers)){
+			alert("Cannot add team to league.");
+		}
+		if(!liga.addTeam(rangers)){
+			alert("Cannot add team to league.");
+		}
+		// if(!liga.addTeam(bulls)){
+		// 	alert("Cannot add team cat" + bulls.sport + " to league playing another sport " );
+		// }
+
+
+
 		document.write('Here is my team:<br><br>');
 		document.write(Tigers);
+		document.write("<hr>");
+		document.write(liga);
 	</script>
 </body>
 </html>

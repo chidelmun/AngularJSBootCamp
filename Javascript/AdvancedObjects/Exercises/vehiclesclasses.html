@@ -41,7 +41,7 @@
 		    	return   "Type : " + this.vehicleType + '<br>' +
 		    			" Year Purchased :" + this.yearPurchased + '<br>' +
 		    			"VIN :" + this.VIN + '<br>' +
-		    			"Purchase Price :" + this.purchasePrice + '<br>';
+		    			"Purchase Price :" + this.purchasePrice + '<hr><br>';
 		    }
 
 		    /*
@@ -57,17 +57,19 @@
 		    			else, vehicles are "same"
 		    */
 			static Compare(v1, v2){
-				var ret;
-				if(v1.purchasePrice == v2.purchasePrice){
-					ret = 0;
-				}else{
-					if(v1.purchasePrice < v2.purchasePrice){
-						ret = -1;
-					}else{
-						ret = 1;
-					}
-				}
-				return ret;
+				// var ret;
+				// if(v1.purchasePrice == v2.purchasePrice){
+				// 	ret = 0;
+				// }else{
+				// 	if(v1.purchasePrice < v2.purchasePrice){
+				// 		ret = -1;
+				// 	}else{
+				// 		ret = 1;
+				// 	}
+				// }
+				// return ret;
+
+				return v1.purchasePrice < v2.purchasePrice ? v1.purchasePrice > v2.purchasePrice ? -1:1:0;
 			}
 
 		}
@@ -101,7 +103,7 @@
 				for(let p in this.vehicles){
 					if(this.vehicles.hasOwnProperty(p)){
 						let car = this.vehicles[p];
-						str += "Type :" + car.vehicleType + "<br> Year Purchased : " + car.yearPurchased + "<br>" + " ID Number :" + car.VIN + " <br> Year Made :" +  car.yearPurchased + "<br> </li>";
+						str += "Type :" + car.vehicleType + "<br> Year Purchased : " + car.yearPurchased + "<br>" + " ID Number :" + car.VIN + " <br> Purchase Price :" + car.purchasePrice + "<br> <hr></li>";
 					}
 				}
 				str += "</ul>";
@@ -199,7 +201,7 @@
 						write code to compare the user-selected vehicles
 						and show results via alert popup
 					*/
-					alert(Vehicle.Compare(selectedVehicle1,selectedVehicle2));
+					alert("Car " + selectedVehicle1.toString());
 
 				},
 				false);

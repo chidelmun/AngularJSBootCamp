@@ -16,6 +16,9 @@
 			speak() {
 				return 'ehh';
 			}
+			static run(){
+		    	return "Running Fast";
+		    }
 		}
 
 		class Dog extends Pet {
@@ -26,6 +29,10 @@
 			speak() {
 				return 'woof';
 		    }
+		    static run(){
+		    	return "Running Slow";
+		    }
+		    
 		}
 
 		class Bird extends Pet {
@@ -40,6 +47,7 @@
 			speak() {
 				return 'cheep';
 			}
+
 		}
 	</script>
 </head>
@@ -54,7 +62,7 @@
 		var fido = new Dog('Fido', 'brown');
 		document.write(fido);
 		document.write('<br>');
-		document.write(fido.name + ' says "' + fido.speak() + '"');
+		document.write(fido.name + ' says "' + fido.speak()  + " and is " + Dog.run() + '"');
 		document.write('<hr>');
 		var feathers = new Bird('Feathers', 'yellow', 7);
 		document.write(feathers);
