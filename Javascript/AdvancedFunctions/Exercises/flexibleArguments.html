@@ -13,13 +13,29 @@
 			var res = nums[0];
 			switch(maxOrMin){
 				case 'max':
-				alert('Max');
+				for(let i in nums){
+					if(nums[i] > res){
+			 			res = nums[i];
+			 		}
+				}
+				//alert('Max');
 				break;
 				case 'min':
-				alert('MIN');
+				for(let i in nums){
+					if(nums[i] < res){
+			 			res = nums[i];
+			 		}
+				}
+				//alert('MIN');
 				break;
 				default:
-				alert("Default");
+				for(let i in nums){
+					if(nums[i] > res){
+			 			res = nums[i];
+			 		}
+				}
+				//var x = 55;
+				//alert("Default : " + x);
 				break
 			}
 
@@ -57,6 +73,10 @@
 		// document.write(stats('min', 3, 49, 20, -3, 17));
 		// document.write('<hr>');
 		// document.write(stats('min', 22, 11, 38, -3, 17));
+		document.write('<hr>');
+		document.write(stats('max', 22,-19,44,256,-19,700));
+		document.write('<hr>');
+		document.write(stats('min', 22,-19,44,256,-19,700));
 		document.write('<hr>');
 		document.write(stats(22,-19,44,256,-19,700));
 	</script>
