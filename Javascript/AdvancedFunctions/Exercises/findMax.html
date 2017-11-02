@@ -38,14 +38,17 @@
 				// add randomNum to the array a
 				// display randomNum in the innerHTML of the #arrayDisplay div
 				a.push(randomNum);
-				arrayDisplay.innerHTML +=  randomNum + ',';
+				arrayDisplay.innerHTML +=  randomNum;
+				if(i < 9){
+					arrayDisplay.innerHTML += ',';
+				}
 			}
 
 			var resultDisplay = document.getElementById('resultDisplay');
 			document.getElementById('doFindMax').addEventListener('click', function(e) {
 				resultDisplay.innerHTML = '';
 				resultDisplay.innerHTML = 'The max is: ' + findMax(a);
-			}, 'false');
+			}, true);
 		}
 		
 	</script>

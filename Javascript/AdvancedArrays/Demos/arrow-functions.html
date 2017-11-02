@@ -11,6 +11,10 @@
 		var foo = function(a, b) {
 			return 3*a + b;
 		}
+
+		var max = (x, y) => {
+			return x > y ? x :y;
+		}
 		document.write( foo(1,2) );
 
 		document.write( '<hr>' );
@@ -35,6 +39,8 @@
 		// using arrow function:
 		var arr2Squares = arr2.map(i => i*i);
 		document.write( arr2Squares );
+		document.write( '<hr>' );
+		document.write( max(7,99) );
 
 	</script>
 </body>
