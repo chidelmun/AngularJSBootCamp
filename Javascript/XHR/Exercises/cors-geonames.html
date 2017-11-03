@@ -19,9 +19,41 @@
 	window.onload = function() {
 		var btn = document.getElementById('btn');
 		var responseContent = document.getElementById('responseContent');
+		
 
 		btn.addEventListener('click', function(e) {
+			responseContent.innerHTML = "";
+			var countryCode = document.getElementById('countryabbr').value;
 			//your code here
+			var url = 'http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country='+countryCode + '&username=webucator&style=full'
+			//alert(url);
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open('GET', url, true);
+
+			xmlhttp.onreadystatechange = function(){
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					if(JSON.parse(xmlhttp.responseText).geonames.length == 0){
+						alert("No Such Country with Code :" + countryCode);
+					}else{
+						var result = JSON.parse(xmlhttp.responseText).geonames;
+						result.forEach(function(item){
+							//alert(item.continent);
+							responseContent.innerHTML  += '<p> Name :' + item.countryName + '</p>' +
+														  '<p> Capital: ' + item.capital + '</p>' +
+														  '<p> Continent :' + item.continent + '</p>' +
+														  '<p> Short Code :' + item.countryCode + '</p>' +
+														  '<p> Currency code :' + item.currencyCode + '</p>' +
+														  '<p> Continent :' + item.continentName + '</p>';
+											  
+						});
+
+					}
+
+					
+				}
+			}
+			xmlhttp.send(null);
+			
 		});
 	};
 </script>
@@ -30,6 +62,8 @@
 	<input type="text" id="countryabbr" placeholder="US">
 	<button id="btn">Fetch Country Info</button>
 	<br>
-	<div id="responseContent"></div>
+	<div id="responseContent">
+			
+	</div>
 </body>
 </html>

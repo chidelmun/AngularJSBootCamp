@@ -9,24 +9,21 @@
 		var xmlhttp = new XMLHttpRequest();
 		var output = document.getElementById("EmployeeList");
 		output.innerHTML = "<h2>Loading...</h2>";
-		/*
-			Using the xmlhttp object created above
-			send an http request using the GET method
-			and the passed-in URL.
-			
-			When the readystate changes call the display()
-			function with the appropriate parameters.
-		*/
+
+		xmlhttp.open('GET', url, true);
+		xmlhttp.onreadystatechange = function()
+		{
+			display(output, xmlhttp);
+		}
+		xmlhttp.send(null);
 	}
 
 	function display(output, xmlhttp) {
 		var employees, eid, target, i;
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 			output.style.display = "block";
-			/*
-				Set the innerHTML property of the output div
-				to the response text.
-			*/
+			
+			output.innerHTML = xmlhttp.responseText;
 
 			if (xmlhttp.responseText.indexOf("Failed") == 0) {
 				output.className = "Warning";
@@ -61,19 +58,19 @@
 					});
 				}
 			}
-			/*
-				Set the appropriate content type for submitting form data
-				and send the request. The server code is expecting a parameter
-				named eid, with the employee id we received.
-			*/
+
+			xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+
+			xmlhttp.send("eid=" + eid);
+			
 	}
 
 	function updateEmployee(url, field, value, eid) {
-		/*
-			Write the code leading up to the call to send() below.
-			The callback function for the readystatechange 
-			should be: employeeUpdated
-		*/
+		
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open('POST', url, true);
+		xmlhttp.onreadystatechange = employeeUpdated;
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 		xmlhttp.send("eid=" + eid + "&field=" + field + "&value=" + value);
 
 		function employeeUpdated() {
@@ -87,7 +84,7 @@
 					msg.innerHTML = "Updated!";
 					getEmployeeList('EmployeeList');
 				}
-				fadeElem(msg, 255, 255, 0, 255, 255, 255);
+				 fadeElem(msg, 255, 255, 0, 255, 255, 255);
 			}
 		}
 	}

@@ -9,10 +9,15 @@
 		var xmlhttp = new XMLHttpRequest();
 		var contentDiv = document.getElementById("Content");
 
-		xmlhttp.open("HEAD", "Demo.xml", true);
+		xmlhttp.open("GET", "https://api.github.com/users/chidelmun", true);
 		xmlhttp.onreadystatechange = function() {
-			contentDiv.innerHTML +=
-				"Ready State: " + xmlhttp.readyState + "<br>";
+			// contentDiv.innerHTML +=
+			// 	"Ready State: " + xmlhttp.readyState + "<br>" +
+			// 	"Data " + xmlhttp.responseText + "<br>";
+
+			if(xmlhttp.readyState == 4){
+				alert(JSON.parse(xmlhttp.responseText).url);
+			}
 		}
 		xmlhttp.send(null);
 	}

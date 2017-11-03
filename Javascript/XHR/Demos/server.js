@@ -43,4 +43,5 @@ app.get('/promise', function(req, res) {
 
 
 //listen on port 8080 for webserver:
-app.listen(8080);
+var port = 8080;
+app.listen(port);

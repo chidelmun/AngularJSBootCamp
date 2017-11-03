@@ -8,13 +8,14 @@
 		var xmlhttp = new XMLHttpRequest();
 		var contentDiv = document.getElementById("Content");
 
-		xmlhttp.open("GET", "Demo?FirstName=Nat&LastName=Dunn", true);
+		xmlhttp.open("POST", "Demo", true);
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				contentDiv.innerHTML = xmlhttp.responseText;
 			}
 		}
-		xmlhttp.send(null);
+		xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+		xmlhttp.send("FirstName=Nat&LastName=Dunn");
 	}
 
 	window.onload = function() {

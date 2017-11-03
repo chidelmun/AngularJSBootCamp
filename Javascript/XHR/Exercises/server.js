@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 var sqlite3 = require('sqlite3').verbose();
+var hostname = "";
 
 app.set('views', __dirname);
 app.set('view engine', 'pug');
@@ -15,6 +16,7 @@ app.set('view engine', 'pug');
 var db = new sqlite3.Database('Northwind.sqlite');
 
 app.get('/EmployeeList', function(req, res) {
+  hostname = req.ip;
   db.all("SELECT EmployeeID, FirstName, LastName FROM Employees", function(err, row) {
     if (err !== null) {
       res.status(500).send("An error has occurred -- " + err);
@@ -29,6 +31,7 @@ app.get('/EmployeeList', function(req, res) {
 });
 
 app.post('/EditEmployee', function(req, res) {
+  hostname = req.ip;
   var eid = req.param('eid');
   var field = req.param('field');
   var value = req.param('value');
@@ -54,6 +57,7 @@ app.post('/EmployeeForm', function(req, res) {
 });
 
 app.get('/Demo', function(req, res) {
+  hostname = req.ip;
   var FirstName = req.param('FirstName');
   var LastName = req.param('LastName');
   var respondWith = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -64,6 +68,7 @@ app.get('/Demo', function(req, res) {
 });
 
 app.post('/Demo', function(req, res) {
+  hostname = req.ip;
   var FirstName = req.param('FirstName');
   var LastName = req.param('LastName');
   var respondWith = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -76,4 +81,7 @@ app.post('/Demo', function(req, res) {
 app.use(directory(__dirname));
 app.use(express.static(__dirname));
 
-app.listen(8080);
+var port = 8080;
+app.listen(port, function(){
+    console.log("App running at:  http://" + hostname + ":" + port);
+});

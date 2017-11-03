@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript">
+	var clicks = 0;
 	function start() {
 		if (window.XMLHttpRequest) {
 			var xmlhttp = new XMLHttpRequest();
 			document.getElementById("Content").innerHTML =
-				"<h1>Using XMLHttpRequest Object</h1>";
+				"<h1>Using XMLHttpRequest Object :</h1>" + clicks++;
 		} else {
 			var xmlhttp = false;
 			document.getElementById("Content").innerHTML =

@@ -7,11 +7,33 @@
 <body>
 	<h1>mode</h1>
 	<script>
-		var nums = [92, 2, 33, 92, 33, 7, 20, 20, 20, 33, 57, 92, 41, 7];
+		var nums = [92, 2,99, 33, 92, 33, 7, 20, 20, 20, 33, 57, 92, 41, 7,99,99,99];
 		document.write(nums);
 
 		function mode(arr) {
 			//your code here
+			var result = [];
+			var max = arr.reduce(function(x,y){
+				return x>y ? x :y;
+			});
+			var frequencyTable = new Array(max + 1).fill(0);
+
+			arr.forEach(function(value) {
+				frequencyTable[value] = frequencyTable[value] + 1;
+			});
+
+			var maxVal = frequencyTable.reduce(function(a,b){
+				return a>b?a:b;
+			});
+
+			var maxIndex = frequencyTable.indexOf(maxVal);
+			while (maxIndex > 0) {
+				result.push(maxIndex);
+				maxIndex = frequencyTable.indexOf(maxVal, maxIndex + 1);
+			}
+
+			return result;
+
 		}
 
 		document.write('<hr>');

@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 
 //use Jade templating engine:
 app.set('views', __dirname);
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 
 
 app.get('/HelloWorld', function(req, res) {
@@ -33,6 +33,11 @@ app.get('/HelloWorldPug', function(req, res) {
       res.status(200).send(html);
     }
   });
+});
+
+app.get('/home', function(req,res){
+   var name = req.param('name') || 'Somebody';
+   res.render('Home.ejs', {'name' : name});
 });
 
 //allow for directory browsing:

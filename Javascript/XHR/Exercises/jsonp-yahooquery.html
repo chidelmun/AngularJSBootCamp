@@ -7,6 +7,21 @@
 	function displayPlace(data) {
 		// display information about user-entered place; use Array.isArray to test
 		// whether the returned results are an array or a single object
+		//alert("Places");
+		var content = document.getElementById('content');
+		content.innerHTML = '';
+		var result = data.query.results.place;
+		if (Array.isArray(result)) {
+			result.forEach(function(item){
+				content.innerHTML += '<p>' + item.placeTypeName.content + ' : ' + item.name + ' => Country :' + item.country.content + '</p>';
+			});
+		}
+		//alert(result);
+		content.innerHTML += '<p>' + result.name + '</p>';
+		
+		
+
+		
 	}
 
 	function requestJSONP(url) {
@@ -25,7 +40,9 @@
 		btn.addEventListener('click', function(e) {
 			var text = document.getElementById('text').value;
 			var script = document.createElement('script');
-			var url = // craft a URL that includes the YQL query
+			var url = "http://query.yahooapis.com/v1/public/yql?format=json&q=select+*+from+geo.places+where+text='"+text+"'&callback=displayPlace";
+			// craft a URL that includes the YQL query
+
 			requestJSONP(url);
 		});
 	}
