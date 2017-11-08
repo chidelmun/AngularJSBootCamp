@@ -7,19 +7,45 @@
 <script type="text/javascript">
 	function init() {
 		var quiz = document.getElementById("quizForm");
-		var inputs = quiz.getElementsByTagName("input");
-		for (var i = 0; i < inputs.length; i++) {
-			observeEvent(inputs[i], "click", checkAnswer);
-		}
+		quiz.addEventListener('click', checkAnswer, false);
 	}
-
+	
 	function respond(xmlhttp, resultDiv) {
-		/*finish this function*/
+		resultDiv.innerHTML = xmlhttp.responseText;
+		//alert(xmlhttp.responseText);
 	}
 
 	function checkAnswer(e) {
-		var target = e.target;
-		/*finish this function*/
+		 var promise = new Promise(function(resolve, reject){
+			var target = e.target;
+			var q = target.name;
+			var a = target.value;
+			var obj = {
+				question: q,
+				answer: a
+			};
+		 	var resultDiv = document.getElementById(q + "Result");
+		 	var strJSON = encodeURIComponent(JSON.stringify(obj));
+		 	resultDiv.innerHTML = "checking";
+		 	var xmlhttp = new XMLHttpRequest();
+		 	xmlhttp.open('POST', 'AjaxQuiz', true);
+		 	xmlhttp.onreadystatechange = function(){
+		 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		 			//alert(xmlhttp.responseText);
+					resolve(xmlhttp);
+			 	}else{
+			 		reject(xmlhttp);
+			 	}
+		 	}
+		 	xmlhttp.send("strJSON=" + strJSON);
+		 });
+
+		 promise.then(function(xmlhttp){
+		 	respond(xmlhttp, resultDiv);
+		 }).catch(function(xmlhttp,resultDiv){
+		 	respond(xmlhttp, resultDiv);
+		 });
+
 	}
 
 	window.onload = function() {

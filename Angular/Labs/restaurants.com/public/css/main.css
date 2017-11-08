@@ -1,0 +1,87 @@
+body {
+    margin: 10px 30px 10px 30px;
+    color: white;
+    font-size: 1.5em;
+    font-family: sans-serif;
+}
+
+header {
+
+    background: #6D7993;
+    margin-bottom: 5px;
+}
+
+#page-title {
+    padding-top: 60px;
+    font-size: 4em;
+}
+
+section {
+    display: flex;
+}
+
+nav {
+    background: #96858F;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    float: left;
+
+}
+
+#cuisine-menu {
+    padding-left: .5em;
+}
+
+span {
+    margin-left: .25em;
+}
+
+article {
+    background: #D5D5D5;
+    margin-bottom: 5px;
+    overflow: auto;
+    flex: 1;
+}
+
+
+article title {
+    display: block;
+    margin-bottom: .25em;
+    font-size: 1.5em;
+}
+
+footer {
+    clear: both;
+    background: #9099A2;
+    text-align: center;
+    font-size: .75em;
+}
+
+header,
+nav,
+article,
+footer {
+    padding: 10px;
+}
+
+h3 {
+    padding-top: -20em;
+}
+
+.map-icon {
+    padding-left: .25em;
+    width: 0.8em;
+    height: 0.8em;
+}
+
+.review-div {
+    font-size: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+
+.icon {
+    width: .8em;
+    height: .8em;
+    padding-left: .5em;
+}

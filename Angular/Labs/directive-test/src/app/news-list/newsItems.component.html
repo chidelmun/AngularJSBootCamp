@@ -1,0 +1,10 @@
+<div>
+    <div *ngFor="let news of newsItems; let newsId = index">
+      <h3>{{news.title}}</h3>
+      <p [ngClass]="{collapsed:selectedNewsId != newsId}">
+        {{news.body}}
+      </p>
+
+      <a href (click)="expandNews(newsId)" [hidden="selectedNewsId == newsId"]> More...</a>
+    </div>
+</div>

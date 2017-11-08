@@ -21,6 +21,36 @@
         var divisor = divisorField.value;
         var quotient;
 
+        //msgField.innerHTML = eval(dividend/divisor);
+
+        try{
+            if(isNaN(dividend) || isNaN(divisor)){
+                //alert("Can only divide numbers");
+                throw {
+                    name : "InvalidArgumentType",
+                    message : "Can only divide Numbers"
+                };
+            }else{
+                //alert("Correct");
+                try{
+
+                    if (divisor == 0){
+                        throw {
+                            name : "DivideByZeroError",
+                            message : "Cannot Divide By Zero"
+                        }
+
+                    }else{
+                        msgField.innerHTML = eval(dividend/divisor);
+                    }
+                }catch(error){
+
+                }
+            }
+
+        }catch(error){
+            msgField.innerHTML = error.name + " : " + error.message;
+        }
         // your code here
     }
 

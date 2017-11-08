@@ -1,6 +1,11 @@
 //	Regular Expressions
 var reEmail = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
-var rePassword = /^[A-Za-z\d]{6,8}$/;
+var rePassword = /^[A-Za-z0-9]{6,8}$/;
+var reProperName = /^([A-Z]{1}(\w+[\"]))+$/;
+var reInitial = /^[A-Z]{0,1}$/;
+var reState = /^[A-Z]{2}$/;
+var rePostalCode = /^[0-9]{5}([\-0-9]{4})*$/;
+var reUsername = /^[a-zA-Z0-9]{6,15}$/;
 /*
 	Write additional regular expressions to check for:
 	- Proper Name

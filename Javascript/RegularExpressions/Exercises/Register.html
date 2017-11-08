@@ -29,6 +29,17 @@ function validate(form){
 		 - zip
 		 - username
 	*/
+	if (!reUsername.test(userName)) {
+		errors[errors.length] = "Your Username MUST be between 6 and 15";
+	}
+
+	if (!reInitial.test(midInitial)) {
+		errors[errors.length] = "Your Initial can only be ONE uppercase Letter";
+	}
+
+	if (!reState.test(state)) {
+		errors[errors.length] = "State must be 2 Upper case letters";
+	}
 
 	if (!reEmail.test(email)) {
 		errors[errors.length] = "You must enter a valid email address.";
